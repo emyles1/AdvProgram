@@ -31,12 +31,9 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
-            this.lblSaveTo = new System.Windows.Forms.Label();
             this.txtFN = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtStudID = new System.Windows.Forms.TextBox();
             this.DBAddress1 = new System.Windows.Forms.TextBox();
             this.DBAddress2 = new System.Windows.Forms.TextBox();
             this.DBEmail = new System.Windows.Forms.TextBox();
@@ -63,9 +60,9 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(419, 76);
+            this.btnLoad.Location = new System.Drawing.Point(419, 72);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(113, 20);
+            this.btnLoad.Size = new System.Drawing.Size(113, 24);
             this.btnLoad.TabIndex = 0;
             this.btnLoad.Text = "Load from Database";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -73,7 +70,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(248, 76);
+            this.txtID.Location = new System.Drawing.Point(249, 76);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(132, 20);
             this.txtID.TabIndex = 1;
@@ -87,29 +84,20 @@
             this.lblId.TabIndex = 2;
             this.lblId.Text = "Enter Student Id";
             // 
-            // lblSaveTo
-            // 
-            this.lblSaveTo.AutoSize = true;
-            this.lblSaveTo.Location = new System.Drawing.Point(370, 409);
-            this.lblSaveTo.Name = "lblSaveTo";
-            this.lblSaveTo.Size = new System.Drawing.Size(69, 13);
-            this.lblSaveTo.TabIndex = 3;
-            this.lblSaveTo.Text = "Save XML to";
-            // 
             // txtFN
             // 
-            this.txtFN.Location = new System.Drawing.Point(488, 405);
+            this.txtFN.Location = new System.Drawing.Point(641, 378);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(132, 20);
             this.txtFN.TabIndex = 4;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(659, 405);
+            this.btnSave.Location = new System.Drawing.Point(659, 352);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 20);
+            this.btnSave.Size = new System.Drawing.Size(91, 20);
             this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Save XML As";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -122,22 +110,6 @@
             this.btnBack.Text = "< Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(130, 123);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 46;
-            this.label11.Text = "label11";
-            // 
-            // txtStudID
-            // 
-            this.txtStudID.Location = new System.Drawing.Point(268, 123);
-            this.txtStudID.Name = "txtStudID";
-            this.txtStudID.Size = new System.Drawing.Size(100, 20);
-            this.txtStudID.TabIndex = 45;
             // 
             // DBAddress1
             // 
@@ -306,9 +278,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(659, 82);
+            this.btnAdd.Location = new System.Drawing.Point(659, 323);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(91, 23);
             this.btnAdd.TabIndex = 51;
             this.btnAdd.Text = "Add to XML";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -316,11 +288,11 @@
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(659, 155);
+            this.btnView.Location = new System.Drawing.Point(554, 72);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(75, 23);
+            this.btnView.Size = new System.Drawing.Size(113, 24);
             this.btnView.TabIndex = 52;
-            this.btnView.Text = "View";
+            this.btnView.Text = "View from XML";
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
@@ -335,8 +307,6 @@
             this.Controls.Add(this.DBCourse);
             this.Controls.Add(this.DBCity);
             this.Controls.Add(this.DBCounty);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtStudID);
             this.Controls.Add(this.DBAddress1);
             this.Controls.Add(this.DBAddress2);
             this.Controls.Add(this.DBEmail);
@@ -356,7 +326,6 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtFN);
-            this.Controls.Add(this.lblSaveTo);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnLoad);
@@ -372,12 +341,9 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.Label lblSaveTo;
         private System.Windows.Forms.TextBox txtFN;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtStudID;
         private System.Windows.Forms.TextBox DBAddress1;
         private System.Windows.Forms.TextBox DBAddress2;
         private System.Windows.Forms.TextBox DBEmail;
