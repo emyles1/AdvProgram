@@ -96,12 +96,17 @@ namespace WindowsFormsApp3
 
         private void btnEditStudent_Click(object sender, EventArgs e)
         {
+          
             new AddStudent(conn).ShowDialog();
+           
+
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             new AddStudent(conn).ShowDialog();
+            
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

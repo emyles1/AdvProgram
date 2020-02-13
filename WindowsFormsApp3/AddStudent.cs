@@ -18,7 +18,7 @@ namespace WindowsFormsApp3
     public partial class AddStudent : Form
     {
 
-        class CC : Clear { }
+        class cc : Clear { }
 
         SqlConnection conn;
         Clear cleartxt = new Clear();
@@ -90,7 +90,7 @@ namespace WindowsFormsApp3
 
                 //clear();
                 //DBFirstName.Clear();
-                cleartxt.ClearTxt();
+                //cleartxt.ClearTxt();
 
             }
             else if(rbEditStudent.Checked)
@@ -128,7 +128,7 @@ namespace WindowsFormsApp3
                     conn.Close();
                 }
 
-                cleartxt.ClearTxt();
+               // cleartxt.ClearTxt();
             }
 
             else if(rbDeleteStudent.Checked)
