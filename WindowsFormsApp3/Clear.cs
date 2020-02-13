@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
     class Clear
     {
         
-        public void ClearTxt()
+        public void ClearTxt(Form f)
         {
-            AddStudent Student = new AddStudent();
+
+            foreach(Control c in f.Controls)
+            {
+
+                
+            }
+            /*AddStudent Student = new AddStudent();
 
             Student.DBFirstName.Clear();
             Student.DBSurname.Clear();
@@ -22,7 +29,7 @@ namespace WindowsFormsApp3
             Student.DBCity.Clear();
             Student.DBCounty.Clear();
             Student.DBCourse.Clear();
-            Student.txtStudID.Clear();
+            Student.txtStudID.Clear();*/
         }
 
 

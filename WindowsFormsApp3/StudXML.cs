@@ -16,10 +16,10 @@ namespace WindowsFormsApp3
     {
         private DataSet ds;
         SqlConnection conn;
-        public StudXML()
+        public StudXML(SqlConnection conn)
         {
             InitializeComponent();
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
+            this.conn = conn;
         }
 
         private void btnBack_Click(object sender, EventArgs e)

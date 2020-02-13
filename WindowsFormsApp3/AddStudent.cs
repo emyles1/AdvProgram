@@ -11,18 +11,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*event handler for checking textboxes
- https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.textboxbase.clear?view=netframework-4.8https:
+ //hps://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.textboxbase.clear?view=netframework-4.8https:
     */
 namespace WindowsFormsApp3
 {
     public partial class AddStudent : Form
     {
+
+        class CC : Clear { }
+
         SqlConnection conn;
         Clear cleartxt = new Clear();
-        public AddStudent()
+        public AddStudent(SqlConnection conn)
         {
             InitializeComponent();
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
+            this.conn = conn;
           
         }
 
