@@ -89,7 +89,7 @@ namespace WindowsFormsApp3
 
         private void btnNewStudent_Click(object sender, EventArgs e)
         {
-            new AddStudent(conn).ShowDialog();
+            new AddStudent(conn,2).ShowDialog();
         }
 
 
@@ -97,7 +97,7 @@ namespace WindowsFormsApp3
         private void btnEditStudent_Click(object sender, EventArgs e)
         {
           
-            new AddStudent(conn).ShowDialog();
+            new AddStudent(conn,1).ShowDialog();
            
 
 
@@ -105,7 +105,7 @@ namespace WindowsFormsApp3
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            new AddStudent(conn).ShowDialog();
+            new AddStudent(conn,3).ShowDialog();
             
         }
 

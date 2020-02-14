@@ -17,16 +17,24 @@ namespace WindowsFormsApp3
 {
     public partial class AddStudent : Form
     {
-
+        int mode;
         class cc : Clear { }
 
         SqlConnection conn;
-        Clear cleartxt = new Clear();
-        public AddStudent(SqlConnection conn)
+        Clear cleartxt = new cc();
+        public AddStudent(SqlConnection conn, int m)
         {
+            mode = m;
             InitializeComponent();
             this.conn = conn;
-          
+            if (mode == 2)
+                this.rbAddStudent.Checked = true;
+            if (mode == 1)
+                this.rbEditStudent.Checked = true;
+            if (mode == 3)
+                this.rbDeleteStudent.Checked = true;
+            labelValue();
+
         }
 
 
@@ -37,20 +45,24 @@ namespace WindowsFormsApp3
 
         private void rbAddStudent_CheckedChanged(object sender, EventArgs e)
         {
-            labelValue(2);
+            mode = 2;
+         
+            labelValue();
 
         }
         private void rbEditStudent_CheckedChanged(object sender, EventArgs e)
         {
-
-             labelValue(1);
+            //TODO
+            mode = 1;
+            labelValue();
        
         }
 
         private void rbDeleteStudent_CheckedChanged(object sender, EventArgs e)
         {
             //lets start this today
-            labelValue(3);
+            mode = 3;
+            labelValue();
          
         }
 
@@ -88,7 +100,8 @@ namespace WindowsFormsApp3
                     conn.Close();
                 }
 
-                //clear();
+
+
                 //DBFirstName.Clear();
                 //cleartxt.ClearTxt();
 
@@ -154,6 +167,9 @@ namespace WindowsFormsApp3
                 clear();
                // cleartxt.ClearTxt();
             }
+            cleartxt.ClearTxt(this);
+            labelValue();
+
 
 
         }
@@ -226,14 +242,15 @@ namespace WindowsFormsApp3
         }
 
 
-        public void labelValue(int value)
+        public void labelValue()
         {
-
+            int value = mode;
             //better to user a switch statment here
             if (value == 1)
             {
 
                 txtStudID.Visible = true;
+                txtStudID.Enabled = true;
                 btnLoadStd.Visible = true;
                 label11.Visible = true;
 

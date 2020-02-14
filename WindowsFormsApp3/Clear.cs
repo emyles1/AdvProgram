@@ -15,11 +15,12 @@ namespace WindowsFormsApp3
 
             foreach(Control c in f.Controls)
             {
-
+                
                 if (c is TextBox)
                     (c as TextBox).Clear();
                 
             }
+
             /*AddStudent Student = new AddStudent();
 
             Student.DBFirstName.Clear();
