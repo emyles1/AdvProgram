@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 /*event handler for checking textboxes
  //hps://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.textboxbase.clear?view=netframework-4.8https:
@@ -68,7 +69,7 @@ namespace WindowsFormsApp3
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string ID;
+           
 
             if (rbAddStudent.Checked)
             {
@@ -146,7 +147,7 @@ namespace WindowsFormsApp3
 
             else if(rbDeleteStudent.Checked)
             {
-                ID = txtStudID.Text;
+                int ID = int.Parse(txtStudID.Text);
                 try
                 {
                     SqlCommand cmd = new SqlCommand("Delete from Student where id=@ID", conn);
@@ -184,30 +185,33 @@ namespace WindowsFormsApp3
         {
 
             string ID = txtStudID.Text;
+          
 
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
-            cmd.Parameters.AddWithValue("@ID", ID);
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                if(reader.Read())
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
+                cmd.Parameters.AddWithValue("@ID", ID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
+                    if (reader.Read())
+                    {
 
-                    DBFirstName.Text = reader["FirstName"].ToString();
-                    DBSurname.Text = reader["Surname"].ToString();
-                    DBEmail.Text = reader["Email"].ToString();
-                    DBPhone.Text = reader["Phone"].ToString();
-                    DBAddress1.Text = reader["AddressL1"].ToString();
-                    DBAddress2.Text = reader["AddressL2"].ToString();
-                    DBCity.Text = reader["City"].ToString();
-                    DBCounty.Text = reader["County"].ToString();
-                    comboxLevel.Text = reader["level"].ToString();
-                    DBCourse.Text = reader["Course"].ToString();
-                    
-                    //MessageBox.Show("test" + reader["FirstName"]);
+                        DBFirstName.Text = reader["FirstName"].ToString();
+                        DBSurname.Text = reader["Surname"].ToString();
+                        DBEmail.Text = reader["Email"].ToString();
+                        DBPhone.Text = reader["Phone"].ToString();
+                        DBAddress1.Text = reader["AddressL1"].ToString();
+                        DBAddress2.Text = reader["AddressL2"].ToString();
+                        DBCity.Text = reader["City"].ToString();
+                        DBCounty.Text = reader["County"].ToString();
+                        comboxLevel.Text = reader["level"].ToString();
+                        DBCourse.Text = reader["Course"].ToString();
+
+                        //MessageBox.Show("test" + reader["FirstName"]);
+                    }
                 }
-            }
+            
             conn.Close();
+
 
 
             if (rbEditStudent.Checked && txtStudID.Text != null)
