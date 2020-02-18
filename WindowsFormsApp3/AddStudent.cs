@@ -76,25 +76,31 @@ namespace WindowsFormsApp3
 
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Student " +
-                        "VALUES(@FirstName, @Surname,@Email,@Phone,@AddressL1,@AddressL2,@City,@County,@Level,@Course)", conn);
-                    //cmd.Parameters.AddWithValue("@ID", DBStudNo.Text);
-                    cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
-                    cmd.Parameters.AddWithValue("@Surname", DBSurname.Text);
-                    cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
-                    cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
-                    cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
-                    cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
-                    cmd.Parameters.AddWithValue("@City", DBCity.Text);
-                    cmd.Parameters.AddWithValue("@County", DBCounty.Text);
-                    cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
-                    cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
 
-                    if (conn.State == ConnectionState.Closed
-                        || conn.State == ConnectionState.Broken)
+                    using (SqlCommand cmd = new SqlCommand("StudentInsert", conn))
+                    {
                         conn.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Added");
+                        // set command type
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        // add one or more parameters
+                        cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
+                        cmd.Parameters.AddWithValue("@Surname", DBSurname.Text);
+                        cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
+                        cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
+                        cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
+                        cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
+                        cmd.Parameters.AddWithValue("@City", DBCity.Text);
+                        cmd.Parameters.AddWithValue("@County", DBCounty.Text);
+                        cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
+                        cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
+
+                        if (conn.State == ConnectionState.Closed
+                            || conn.State == ConnectionState.Broken)
+                            conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Added");
+                    
+                    }
                 }
                 finally
                 {
@@ -109,56 +115,63 @@ namespace WindowsFormsApp3
             }
             else if(rbEditStudent.Checked)
             {
-               
+
                 try
                 {
-                    string cmdText = "UPDATE Student SET Firstname = " +
-                        "@FirstName, Surname = @Surname, Email = @Email, " +
-                        "Phone = @Phone, AddressL1 = @AddressL1, " +
-                        "AddressL2 = @AddressL2, City = @City, County = @County, " +
-                        "Course = @Course, Level = @Level "
-                        + "Where ID = @ID";
-                    SqlCommand cmd = new SqlCommand(cmdText, conn);
-                    cmd.Parameters.AddWithValue("@ID", txtStudID.Text);
-                    cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
-                    cmd.Parameters.AddWithValue("@Surname", DBSurname.Text);
-                    cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
-                    cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
-                    cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
-                    cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
-                    cmd.Parameters.AddWithValue("@City", DBCity.Text);
-                    cmd.Parameters.AddWithValue("@County", DBCounty.Text);
-                    cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
-                    cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
 
-                    if (conn.State == ConnectionState.Closed
-                        || conn.State == ConnectionState.Broken)
+                    using (SqlCommand cmd = new SqlCommand("StudentEdit", conn))
+                    {
                         conn.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Added");
+                        // set command type
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        // add one or more parameters
+                        cmd.Parameters.AddWithValue("@ID", txtStudID.Text);
+                        cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
+                        cmd.Parameters.AddWithValue("@Surname", DBSurname.Text);
+                        cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
+                        cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
+                        cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
+                        cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
+                        cmd.Parameters.AddWithValue("@City", DBCity.Text);
+                        cmd.Parameters.AddWithValue("@County", DBCounty.Text);
+                        cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
+                        cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
+
+                        if (conn.State == ConnectionState.Closed
+                            || conn.State == ConnectionState.Broken)
+                            conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Updated");
+
+                    }
                 }
                 finally
                 {
                     conn.Close();
                 }
+            
 
-               // cleartxt.ClearTxt();
             }
 
             else if(rbDeleteStudent.Checked)
             {
-                int ID = int.Parse(txtStudID.Text);
+             
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("Delete from Student where id=@ID", conn);
-                    cmd.Parameters.AddWithValue("@ID", ID);
-
-
-                    if (conn.State == ConnectionState.Closed
-                        || conn.State == ConnectionState.Broken)
+                    using (SqlCommand cmd = new SqlCommand("StudentDelete", conn))
+                    {
                         conn.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Deleted");
+                        // set command type
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        // add one or more parameters
+                        cmd.Parameters.AddWithValue("@ID", txtStudID.Text);
+              
+                        if (conn.State == ConnectionState.Closed
+                            || conn.State == ConnectionState.Broken)
+                            conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Deleted");
+                    }
                 }
                 finally
                 {
