@@ -105,8 +105,7 @@ namespace WindowsFormsApp3
                             conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Added");
-
-                        String LogTransaction = String.Format("New Student {0}, {1}, Added on  {2}", DBFirstName.Text, DBSurname.Text, DateTime.Now);
+                        String LogTransaction = String.Format("Trasaction Date: {0} | New Student: {1}, {2} | Added", DateTime.Now, DBFirstName.Text, DBSurname.Text );
                         log.LogDB(LogTransaction);
 
                         conn.Close();
@@ -155,7 +154,7 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
-                    String LogTransaction = String.Format("{0}, {1}, Edited on  {2}", DBFirstName.Text, DBSurname.Text, DateTime.Now);
+                    String LogTransaction = String.Format("Transaction Date: {0} | Student: {1} {2} | Edited", DateTime.Now, DBFirstName.Text, DBSurname.Text);
                     log.LogDB(LogTransaction);
 
                     conn.Close();
@@ -187,7 +186,7 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
-                    String LogTransaction = String.Format("Student ID {0}, Deleted on  {1}", txtStudID.Text, DateTime.Now);
+                    String LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1} | Deleted", DateTime.Now, txtStudID.Text );
                     log.LogDB(LogTransaction);
                     conn.Close();
                 }
@@ -242,7 +241,7 @@ namespace WindowsFormsApp3
             }
             finally
             {
-                String LogTransaction = String.Format("Student ID {0}, was loaded on  {1}", txtStudID.Text, DateTime.Now);
+                String LogTransaction = String.Format("Trasaction Date: {0},Loaded Student ID: {1}", DateTime.Now, txtStudID.Text);
                 log.LogDB(LogTransaction);
                 conn.Close();
             }
