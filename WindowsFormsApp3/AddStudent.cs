@@ -18,6 +18,7 @@ namespace WindowsFormsApp3
 {
     public partial class AddStudent : Form
     {
+        Logger log = new Logger();
         int mode;
         class cc : Clear { }
 
@@ -47,7 +48,9 @@ namespace WindowsFormsApp3
         private void rbAddStudent_CheckedChanged(object sender, EventArgs e)
         {
             mode = 2;
-         
+
+            cleartxt.ClearTxt(this);
+
             labelValue();
 
         }
@@ -56,13 +59,16 @@ namespace WindowsFormsApp3
             //TODO
             mode = 1;
             labelValue();
-       
+            cleartxt.ClearTxt(this);
+            //labelValue();
+
         }
 
         private void rbDeleteStudent_CheckedChanged(object sender, EventArgs e)
         {
             //lets start this today
             mode = 3;
+            cleartxt.ClearTxt(this);
             labelValue();
          
         }
@@ -99,23 +105,25 @@ namespace WindowsFormsApp3
                             conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Added");
-                    
+
+                        String LogTransaction = String.Format("New Student {0}, {1}, Added on  {2}", DBFirstName.Text, DBSurname.Text, DateTime.Now);
+                        log.LogDB(LogTransaction);
+
+                        conn.Close();
+
                     }
                 }
-                finally
+                catch (Exception)
                 {
-                    conn.Close();
+                    MessageBox.Show("Please ensure all fields have been filled");
                 }
 
-
-
-                //DBFirstName.Clear();
-                //cleartxt.ClearTxt();
-
+                
             }
             else if(rbEditStudent.Checked)
             {
 
+               
                 try
                 {
 
@@ -147,9 +155,13 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
+                    String LogTransaction = String.Format("{0}, {1}, Edited on  {2}", DBFirstName.Text, DBSurname.Text, DateTime.Now);
+                    log.LogDB(LogTransaction);
+
                     conn.Close();
                 }
-            
+
+              
 
             }
 
@@ -175,11 +187,11 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
+                    String LogTransaction = String.Format("Student ID {0}, Deleted on  {1}", txtStudID.Text, DateTime.Now);
+                    log.LogDB(LogTransaction);
                     conn.Close();
                 }
 
-                clear();
-               // cleartxt.ClearTxt();
             }
             cleartxt.ClearTxt(this);
             labelValue();
@@ -198,8 +210,9 @@ namespace WindowsFormsApp3
         {
 
             string ID = txtStudID.Text;
-          
 
+            try
+            {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
                 cmd.Parameters.AddWithValue("@ID", ID);
@@ -207,7 +220,6 @@ namespace WindowsFormsApp3
                 {
                     if (reader.Read())
                     {
-
                         DBFirstName.Text = reader["FirstName"].ToString();
                         DBSurname.Text = reader["Surname"].ToString();
                         DBEmail.Text = reader["Email"].ToString();
@@ -218,12 +230,22 @@ namespace WindowsFormsApp3
                         DBCounty.Text = reader["County"].ToString();
                         comboxLevel.Text = reader["level"].ToString();
                         DBCourse.Text = reader["Course"].ToString();
-
-                        //MessageBox.Show("test" + reader["FirstName"]);
                     }
+                    if(DBFirstName.Text == "")
+                    {
+                        MessageBox.Show("Student doesnt exist");
+                        cleartxt.ClearTxt(this);
+                    }
+                    
                 }
-            
-            conn.Close();
+
+            }
+            finally
+            {
+                String LogTransaction = String.Format("Student ID {0}, was loaded on  {1}", txtStudID.Text, DateTime.Now);
+                log.LogDB(LogTransaction);
+                conn.Close();
+            }
 
 
 
@@ -243,20 +265,6 @@ namespace WindowsFormsApp3
             }
         }
 
-
-        public void clear()
-        {
-            DBFirstName.Clear();
-            DBSurname.Clear();
-            DBEmail.Clear();
-            DBPhone.Clear();
-            DBAddress1.Clear();
-            DBAddress2.Clear();
-            DBCity.Clear();
-            DBCounty.Clear();
-            DBCourse.Clear();
-            txtStudID.Clear();
-        }
 
 
         public void labelValue()
