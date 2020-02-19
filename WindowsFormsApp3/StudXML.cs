@@ -29,43 +29,36 @@ namespace WindowsFormsApp3
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            /* if (ds == null)
-             {
-                 ds = new DataSet();
-             }
-             if (txtFN.Text == "")
-             {
-                 //txtFN.Text = "Games.xml";
-                 txtFN.Text = "Student.xml";
-             }
-             string fileN = txtFN.Text;
-             ds.ReadXml(fileN, XmlReadMode.InferSchema);
-             //if (!ds.Tables.Contains("Game")) throw new Exception();
-             if (!ds.Tables.Contains("Student")) throw new Exception();*/
 
             string ID = txtID.Text;
 
             conn.Open();
             SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
             cmd.Parameters.AddWithValue("@ID", ID);
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            try
             {
-                if (reader.Read())
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
+                    if (reader.Read())
+                    {
 
-                    DBFirstName.Text = reader["FirstName"].ToString();
-                    DBSurname.Text = reader["Surname"].ToString();
-                    DBEmail.Text = reader["Email"].ToString();
-                    DBPhone.Text = reader["Phone"].ToString();
-                    DBAddress1.Text = reader["AddressL1"].ToString();
-                    DBAddress2.Text = reader["AddressL2"].ToString();
-                    DBCity.Text = reader["City"].ToString();
-                    DBCounty.Text = reader["County"].ToString();
-                    comboxLevel.Text = reader["level"].ToString();
-                    DBCourse.Text = reader["Course"].ToString();
-
-                    //MessageBox.Show("test" + reader["FirstName"]);
+                        DBFirstName.Text = reader["FirstName"].ToString();
+                        DBSurname.Text = reader["Surname"].ToString();
+                        DBEmail.Text = reader["Email"].ToString();
+                        DBPhone.Text = reader["Phone"].ToString();
+                        DBAddress1.Text = reader["AddressL1"].ToString();
+                        DBAddress2.Text = reader["AddressL2"].ToString();
+                        DBCity.Text = reader["City"].ToString();
+                        DBCounty.Text = reader["County"].ToString();
+                        comboxLevel.Text = reader["level"].ToString();
+                        DBCourse.Text = reader["Course"].ToString();
+                    }
                 }
+            }
+            finally
+            {
+                if (DBFirstName.Text == "")
+                    MessageBox.Show("Record not found");
             }
             conn.Close();
 
@@ -75,11 +68,11 @@ namespace WindowsFormsApp3
         {
             if (txtFN.Text == "")
             {
-                //txtFN.Text = "Games.xml";
+             
                 txtFN.Text = "Student.xml";
             }
             ds.WriteXml(txtFN.Text);
-            //output.Text = "Saved";
+  
             MessageBox.Show("Saved");
         }
 
@@ -105,7 +98,7 @@ namespace WindowsFormsApp3
             }
             dt = ds.Tables["Student"];
             DataRow row = dt.NewRow();
-            //row["StockID"] = txtID.Text;
+
             row["StudentID"] = txtID.Text;
             row["Name"] = DBFirstName.Text;
             row["Surname"] = DBSurname.Text;
@@ -118,11 +111,10 @@ namespace WindowsFormsApp3
             row["Level"] = comboxLevel.Text;
             row["Course"] = DBCourse.Text;
 
-            // txtID.Clear(); txtDesc.Clear(); txtTitle.Clear(); txtYear.Clear();
+
             dt.Rows.Add(row);
             dt.AcceptChanges();
-            //output.Text = "Record Created";
-            //output.Visible = true;
+
             MessageBox.Show("Record Created");
         }
 
