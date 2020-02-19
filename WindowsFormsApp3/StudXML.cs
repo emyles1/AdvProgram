@@ -67,9 +67,9 @@ namespace WindowsFormsApp3
             {
                 if (DBFirstName.Text == "")
                     MessageBox.Show("Record not found");
-                
+                conn.Close();
             }
-            conn.Close();
+            
             
         }
 
@@ -129,9 +129,10 @@ namespace WindowsFormsApp3
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            cleartxt.ClearTxt(this);
+            
 
-            int ID = int.Parse(txtID.Text);
+            string ID = txtID.Text;
+            cleartxt.ClearTxt(this);
             using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
             {
                 try
@@ -146,7 +147,9 @@ namespace WindowsFormsApp3
                         //read the data
                         while (reader.Read())
                         {
-
+                            //I have to fill the ID Value again as the ClearTxt() method removes it and that method is requried to ensure 
+                            //previous fields are cleared in the event of an empty student returned
+                            txtID.Text = ID;
                             DBFirstName.Text = reader["FirstName"].ToString();
                             DBSurname.Text = reader["Surname"].ToString();
                             DBEmail.Text = reader["Email"].ToString();
@@ -164,8 +167,9 @@ namespace WindowsFormsApp3
                 {
                     if (DBFirstName.Text == "")
                         MessageBox.Show("Record not found");
+                    conn.Close();
                 }
-                conn.Close();
+                
             }
 
           
