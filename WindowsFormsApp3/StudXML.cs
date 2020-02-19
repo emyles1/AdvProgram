@@ -18,6 +18,8 @@ namespace WindowsFormsApp3
         Clear cleartxt = new cc();
         private DataSet ds;
         SqlConnection conn;
+        Logger log = new Logger();
+        String LogTransaction = "";
         public StudXML(SqlConnection conn)
         {
             InitializeComponent();
@@ -61,13 +63,22 @@ namespace WindowsFormsApp3
                             DBCounty.Text = reader["County"].ToString();
                             comboxLevel.Text = reader["level"].ToString();
                             DBCourse.Text = reader["Course"].ToString();
+
+                            LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1}  | Name: {2} {3} | Loaded from StudXML Page ", DateTime.Now, ID, DBFirstName.Text, DBSurname.Text);
+                            log.LogDB(LogTransaction);
                         }
+
                     }
                 }
                 finally
                 {
                     if (DBFirstName.Text == "")
+                    {
+                        LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1}  | Not Found | ", DateTime.Now, ID, DBFirstName.Text, DBSurname.Text);
+                        log.LogDB(LogTransaction);
                         MessageBox.Show("Record not found");
+                    }
+                   
                     conn.Close();
                 }
 

@@ -19,6 +19,7 @@ namespace WindowsFormsApp3
     public partial class AddStudent : Form
     {
         Logger log = new Logger();
+        String LogTransaction = "";
         int mode;
         SqlConnection conn;
         class cc : Clear { }
@@ -106,7 +107,7 @@ namespace WindowsFormsApp3
                             conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Added");
-                        String LogTransaction = String.Format("Trasaction Date: {0} | New Student: {1}, {2} | Added", DateTime.Now, DBFirstName.Text, DBSurname.Text );
+                        LogTransaction = String.Format("Trasaction Date: {0} | New Student: {1}, {2} | Added", DateTime.Now, DBFirstName.Text, DBSurname.Text );
                         log.LogDB(LogTransaction);
 
                         conn.Close();
@@ -155,7 +156,7 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
-                    String LogTransaction = String.Format("Transaction Date: {0} | Student: {1} {2} | Edited", DateTime.Now, DBFirstName.Text, DBSurname.Text);
+                    LogTransaction = String.Format("Transaction Date: {0} | Student: {1} {2} | Edited", DateTime.Now, DBFirstName.Text, DBSurname.Text);
                     log.LogDB(LogTransaction);
 
                     conn.Close();
@@ -187,7 +188,7 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
-                    String LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1} | Deleted", DateTime.Now, txtStudID.Text );
+                    LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1} | Deleted", DateTime.Now, txtStudID.Text );
                     log.LogDB(LogTransaction);
                     conn.Close();
                 }
@@ -242,7 +243,7 @@ namespace WindowsFormsApp3
             }
             finally
             {
-                String LogTransaction = String.Format("Trasaction Date: {0},Loaded Student ID: {1}", DateTime.Now, txtStudID.Text);
+                LogTransaction = String.Format("Trasaction Date: {0},Loaded Student ID: {1}", DateTime.Now, txtStudID.Text);
                 log.LogDB(LogTransaction);
                 conn.Close();
             }
