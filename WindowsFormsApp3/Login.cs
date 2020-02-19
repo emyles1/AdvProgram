@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WindowsFormsApp3
 {
@@ -23,10 +24,11 @@ namespace WindowsFormsApp3
             InitializeComponent();
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
             //this.conn = conn;
-
+            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger.txt");
             btnRefresh.Visible = false;
-            dataGridView1.Visible = false;
+            
             groupBox1.Visible = false;
+            rtextLogger.Visible = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -40,22 +42,26 @@ namespace WindowsFormsApp3
             string username = txtUName.Text;
             string password = txtPass.Text;
 
+            if (btnLogin.Text == "Logout")
+            {
+                
+                groupBox1.Visible = false;
+                btnLogin.Text = "Login";
+                conn.Close();
+            }
+            else
+
             try
             {
                 conn.Open();
-                /* MessageBox.Show("Connected");
-                 SqlCommand cmd = new SqlCommand("SELECT password FROM Admin where Username = " +
-                     "VALUES(@username)", conn);
-                 cmd.Parameters.AddWithValue("@username", txtUName.Text);
-                 string rdr = (string)cmd.ExecuteScalar();
-                 MessageBox.Show("Name: " + rdr);*/
+
 
                 SqlCommand cmd = new SqlCommand();
 
                 cmd.CommandText = "SELECT Password FROM Admin where Username = '"+ username +"'";
                 cmd.Connection = conn;
                 rdr = (string)cmd.ExecuteScalar();
-               // MessageBox.Show("Pass: " + rdr);
+        
 
             }
             catch (Exception ex)
@@ -65,26 +71,31 @@ namespace WindowsFormsApp3
             }
             finally
             {
-                conn.Close();
+
+                    if (rdr == txtPass.Text)
+                    {
+
+                        groupBox1.Visible = true;
+                        btnLogin.Text = "Logout";
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please try Again");
+                    }
+                    conn.Close();
             }
 
 
-            if (rdr == txtPass.Text)
-            {
-                
-                groupBox1.Visible = true;
-                
-            }
-            else
-            {
-                MessageBox.Show("Please try Again");
-            }
+
+
         }
 
         private void btnDataHis_Click(object sender, EventArgs e)
         {
-            dataGridView1.Visible = true;
+
             btnRefresh.Visible = true;
+            rtextLogger.Visible = true;
         }
 
         private void btnNewStudent_Click(object sender, EventArgs e)
@@ -111,44 +122,10 @@ namespace WindowsFormsApp3
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //sql connection object
-               // using (SqlConnection conn = new SqlConnection(conn))
-                {
 
-                    //retrieve the SQL Server instance version
-                    string query = @"SELECT * FROM Student;";
-
-                    //define the SqlCommand object
-                    SqlCommand cmd = new SqlCommand(query, conn);
+            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger.txt");
 
 
-                    //Set the SqlDataAdapter object
-                    SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
-
-                    //define dataset
-                    DataSet ds = new DataSet();
-
-                    //fill dataset with query results
-                    dAdapter.Fill(ds);
-
-                    //set DataGridView control to read-only
-                    dataGridView1.ReadOnly = true;
-
-                    //set the DataGridView control's data source/data table
-                    dataGridView1.DataSource = ds.Tables[0];
-
-
-                    //close connection
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                //display error message
-                MessageBox.Show("Exception: " + ex.Message);
-            }
         }
 
         private void btnXmlStud_Click(object sender, EventArgs e)

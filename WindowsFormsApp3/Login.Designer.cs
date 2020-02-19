@@ -39,11 +39,10 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnDataHis = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnXmlStud = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.rtextLogger = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUserName
@@ -153,25 +152,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 217);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(755, 149);
-            this.dataGridView1.TabIndex = 12;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(671, 389);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(56, 19);
-            this.btnRefresh.TabIndex = 13;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // btnXmlStud
             // 
             this.btnXmlStud.Location = new System.Drawing.Point(152, 29);
@@ -182,13 +162,32 @@
             this.btnXmlStud.UseVisualStyleBackColor = true;
             this.btnXmlStud.Click += new System.EventHandler(this.btnXmlStud_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(652, 391);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(56, 19);
+            this.btnRefresh.TabIndex = 13;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // rtextLogger
+            // 
+            this.rtextLogger.Location = new System.Drawing.Point(133, 275);
+            this.rtextLogger.Name = "rtextLogger";
+            this.rtextLogger.Size = new System.Drawing.Size(575, 99);
+            this.rtextLogger.TabIndex = 14;
+            this.rtextLogger.Text = "";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rtextLogger);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.btnExit);
@@ -199,7 +198,6 @@
             this.Name = "Login";
             this.Text = "Login";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,8 +216,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnDataHis;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnXmlStud;
+        private System.Windows.Forms.RichTextBox rtextLogger;
     }
 }

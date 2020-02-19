@@ -56,6 +56,9 @@
             this.btnLoadStd = new System.Windows.Forms.Button();
             this.txtStudID = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnViewDB = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -114,7 +117,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(522, 329);
+            this.btnSubmit.Location = new System.Drawing.Point(511, 281);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(86, 23);
             this.btnSubmit.TabIndex = 22;
@@ -281,8 +284,8 @@
             // 
             // btnLoadStd
             // 
-            this.btnLoadStd.Location = new System.Drawing.Point(522, 284);
-            this.btnLoadStd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLoadStd.Location = new System.Drawing.Point(511, 250);
+            this.btnLoadStd.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoadStd.Name = "btnLoadStd";
             this.btnLoadStd.Size = new System.Drawing.Size(86, 26);
             this.btnLoadStd.TabIndex = 26;
@@ -306,11 +309,31 @@
             this.label11.TabIndex = 28;
             this.label11.Text = "label11";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 325);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(674, 116);
+            this.dataGridView1.TabIndex = 29;
+            // 
+            // btnViewDB
+            // 
+            this.btnViewDB.Location = new System.Drawing.Point(693, 358);
+            this.btnViewDB.Name = "btnViewDB";
+            this.btnViewDB.Size = new System.Drawing.Size(95, 48);
+            this.btnViewDB.TabIndex = 30;
+            this.btnViewDB.Text = "View/Refresh Database";
+            this.btnViewDB.UseVisualStyleBackColor = true;
+            this.btnViewDB.Click += new System.EventHandler(this.btnViewDB_Click);
+            // 
             // AddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnViewDB);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtStudID);
             this.Controls.Add(this.btnLoadStd);
@@ -342,6 +365,7 @@
             this.Name = "AddStudent";
             this.Text = "AddStudent";
             this.Load += new System.EventHandler(this.AddStudent_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,5 +401,7 @@
         public System.Windows.Forms.TextBox DBCourse;
         public System.Windows.Forms.ComboBox comboxLevel;
         public System.Windows.Forms.TextBox txtStudID;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnViewDB;
     }
 }

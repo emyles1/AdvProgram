@@ -37,6 +37,8 @@ namespace WindowsFormsApp3
                 this.rbDeleteStudent.Checked = true;
             labelValue();
 
+            dataGridView1.Visible = false;
+
         }
 
 
@@ -289,6 +291,7 @@ namespace WindowsFormsApp3
                 label9.Text = "Edit Level";
                 label10.Text = "Edit Course";
                 label11.Text = "Load Student ID";
+                btnSubmit.Text = "Edit";
 
                 DBAddress1.Enabled = false;
                 DBFirstName.Enabled = false;
@@ -318,6 +321,7 @@ namespace WindowsFormsApp3
                 label8.Text = "Add County";
                 label9.Text = "Add Level";
                 label10.Text = "Add Course";
+                btnSubmit.Text = "Add";
 
                 DBAddress1.Enabled = true;
                 DBFirstName.Enabled = true;
@@ -348,6 +352,7 @@ namespace WindowsFormsApp3
                 label9.Text = "Delete Level";
                 label10.Text = "Delete Course";
                 label11.Text = "Load Student ID";
+                btnSubmit.Text = "Delete";
 
                 DBAddress1.Enabled = false;
                 DBFirstName.Enabled = false;
@@ -361,6 +366,55 @@ namespace WindowsFormsApp3
                 comboxLevel.Enabled = false;
             }
 
+        }
+
+        private void btnViewDB_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+
+            try
+            {
+                //sql connection object
+                // using (SqlConnection conn = new SqlConnection(conn))
+                {
+
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT * FROM Student;";
+
+                    //define the SqlCommand object
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+
+                    //Set the SqlDataAdapter object
+                    SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
+
+                    //define dataset
+                    DataSet ds = new DataSet();
+
+                    //fill dataset with query results
+                    dAdapter.Fill(ds);
+
+                    //set DataGridView control to read-only
+                    dataGridView1.ReadOnly = true;
+
+                    //set the DataGridView control's data source/data table
+                    dataGridView1.DataSource = ds.Tables[0];
+
+
+                    //close connection
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+ 
         }
     }
 }
