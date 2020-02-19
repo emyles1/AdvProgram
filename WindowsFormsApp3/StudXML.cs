@@ -14,6 +14,8 @@ namespace WindowsFormsApp3
 {
     public partial class StudXML : Form
     {
+        class cc : Clear { }
+        Clear cleartxt = new cc();
         private DataSet ds;
         SqlConnection conn;
         public StudXML(SqlConnection conn)
@@ -30,9 +32,13 @@ namespace WindowsFormsApp3
         private void btnLoad_Click(object sender, EventArgs e)
         {
 
+            
             string ID = txtID.Text;
+            cleartxt.ClearTxt(this);
+
 
             conn.Open();
+            //todo create a stored procedure here
             SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
             cmd.Parameters.AddWithValue("@ID", ID);
             try
@@ -41,7 +47,9 @@ namespace WindowsFormsApp3
                 {
                     if (reader.Read())
                     {
-
+                        //I have to fill the ID Value again as the ClearTxt() method removes it and that method is requried to ensure 
+                        //previous fields are cleared in the event of an empty student returned
+                        txtID.Text = ID;
                         DBFirstName.Text = reader["FirstName"].ToString();
                         DBSurname.Text = reader["Surname"].ToString();
                         DBEmail.Text = reader["Email"].ToString();
@@ -59,9 +67,10 @@ namespace WindowsFormsApp3
             {
                 if (DBFirstName.Text == "")
                     MessageBox.Show("Record not found");
+                
             }
             conn.Close();
-
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -120,6 +129,8 @@ namespace WindowsFormsApp3
 
         private void btnView_Click(object sender, EventArgs e)
         {
+            cleartxt.ClearTxt(this);
+
             int ID = int.Parse(txtID.Text);
             using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
             {
@@ -151,8 +162,10 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
-                    conn.Close();
+                    if (DBFirstName.Text == "")
+                        MessageBox.Show("Record not found");
                 }
+                conn.Close();
             }
 
           

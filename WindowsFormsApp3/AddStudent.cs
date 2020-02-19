@@ -20,9 +20,8 @@ namespace WindowsFormsApp3
     {
         Logger log = new Logger();
         int mode;
-        class cc : Clear { }
-
         SqlConnection conn;
+        class cc : Clear { }
         Clear cleartxt = new cc();
         public AddStudent(SqlConnection conn, int m)
         {
