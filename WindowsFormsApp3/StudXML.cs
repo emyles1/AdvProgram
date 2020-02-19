@@ -32,45 +32,47 @@ namespace WindowsFormsApp3
         private void btnLoad_Click(object sender, EventArgs e)
         {
 
-            
             string ID = txtID.Text;
             cleartxt.ClearTxt(this);
-
-
-            conn.Open();
-            //todo create a stored procedure here
-            SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
-            cmd.Parameters.AddWithValue("@ID", ID);
-            try
+            using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
             {
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                try
                 {
-                    if (reader.Read())
+                    conn.Open();
+                    // set command type
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    // add one or more parameters
+                    cmd.Parameters.AddWithValue("@IDStud", ID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        //I have to fill the ID Value again as the ClearTxt() method removes it and that method is requried to ensure 
-                        //previous fields are cleared in the event of an empty student returned
-                        txtID.Text = ID;
-                        DBFirstName.Text = reader["FirstName"].ToString();
-                        DBSurname.Text = reader["Surname"].ToString();
-                        DBEmail.Text = reader["Email"].ToString();
-                        DBPhone.Text = reader["Phone"].ToString();
-                        DBAddress1.Text = reader["AddressL1"].ToString();
-                        DBAddress2.Text = reader["AddressL2"].ToString();
-                        DBCity.Text = reader["City"].ToString();
-                        DBCounty.Text = reader["County"].ToString();
-                        comboxLevel.Text = reader["level"].ToString();
-                        DBCourse.Text = reader["Course"].ToString();
+                        //read the data
+                        while (reader.Read())
+                        {
+                            //I have to fill the ID Value again as the ClearTxt() method removes it and that method is requried to ensure 
+                            //previous fields are cleared in the event of an empty student returned
+                            txtID.Text = ID;
+                            DBFirstName.Text = reader["FirstName"].ToString();
+                            DBSurname.Text = reader["Surname"].ToString();
+                            DBEmail.Text = reader["Email"].ToString();
+                            DBPhone.Text = reader["Phone"].ToString();
+                            DBAddress1.Text = reader["AddressL1"].ToString();
+                            DBAddress2.Text = reader["AddressL2"].ToString();
+                            DBCity.Text = reader["City"].ToString();
+                            DBCounty.Text = reader["County"].ToString();
+                            comboxLevel.Text = reader["level"].ToString();
+                            DBCourse.Text = reader["Course"].ToString();
+                        }
                     }
                 }
+                finally
+                {
+                    if (DBFirstName.Text == "")
+                        MessageBox.Show("Record not found");
+                    conn.Close();
+                }
+
+
             }
-            finally
-            {
-                if (DBFirstName.Text == "")
-                    MessageBox.Show("Record not found");
-                conn.Close();
-            }
-            
-            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
