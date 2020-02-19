@@ -128,51 +128,42 @@ namespace WindowsFormsApp3
 
         private void btnView_Click(object sender, EventArgs e)
         {
-
+            int ID = int.Parse(txtID.Text);
             using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
             {
-                conn.Open();
-                // set command type
-                cmd.CommandType = CommandType.StoredProcedure;
-                // add one or more parameters
-                cmd.Parameters.AddWithValue("@IDStud", 1);
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                try
                 {
-                    //read the data
-                    while (reader.Read())
+                    conn.Open();
+                    // set command type
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    // add one or more parameters
+                    cmd.Parameters.AddWithValue("@IDStud", ID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                      
-                        DBFirstName.Text = reader["FirstName"].ToString();
-                        DBSurname.Text = reader["Surname"].ToString();
-                        DBEmail.Text = reader["Email"].ToString();
-                        DBPhone.Text = reader["Phone"].ToString();
+                        //read the data
+                        while (reader.Read())
+                        {
+
+                            DBFirstName.Text = reader["FirstName"].ToString();
+                            DBSurname.Text = reader["Surname"].ToString();
+                            DBEmail.Text = reader["Email"].ToString();
+                            DBPhone.Text = reader["Phone"].ToString();
+                            DBAddress1.Text = reader["AddressL1"].ToString();
+                            DBAddress2.Text = reader["AddressL2"].ToString();
+                            DBCity.Text = reader["City"].ToString();
+                            DBCounty.Text = reader["County"].ToString();
+                            comboxLevel.Text = reader["level"].ToString();
+                            DBCourse.Text = reader["Course"].ToString();
+                        }
                     }
+                }
+                finally
+                {
+                    conn.Close();
                 }
             }
 
-           /* Xml working code
-            if (ds == null || txtID.Text == "")
-            {
-                MessageBox.Show("Not Loaded or Selected");
-            }
-            else
-            {
-                DataTable dt = ds.Tables["Student"];
-                string expr = string.Format("StudentID={0}", txtID.Text);
-                DataRow[] r = dt.Select(expr);
-                txtID.Text = (string)r[0]["StudentID"];
-                DBFirstName.Text = (string)r[0]["Name"];
-                DBSurname.Text = (string)r[0]["Surname"];
-                DBEmail.Text = (string)r[0]["Email"];
-                DBPhone.Text = (string)r[0]["Phone"];
-                DBAddress1.Text = (string)r[0]["Address Line 1"];
-                DBAddress2.Text = (string)r[0]["Address Line 2"];
-                DBCity.Text = (string)r[0]["City"];
-                DBCounty.Text = (string)r[0]["County"];
-                comboxLevel.Text = (string)r[0]["Level"];
-                DBCourse.Text = (string)r[0]["Course"];
-                DBEmail.Text = (string)r[0]["Email"];
-            }*/
+          
         }
     
     }

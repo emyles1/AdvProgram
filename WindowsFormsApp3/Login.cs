@@ -17,13 +17,16 @@ namespace WindowsFormsApp3
     {
         SqlConnection conn;
         string rdr;
+        String LogTransaction = "";
+        Logger log = new Logger();
         public Login()
         {
             //Look at this implementation between Form 1 and AddCustomerForm. Guessing that this needs to be only initalized once then passed to the rest
             //at this moment its initialized on the Form 1 form and here on the login form
             InitializeComponent();
+           
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
-            //this.conn = conn;
+            
             rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger.txt");
             btnRefresh.Visible = false;
             
@@ -47,22 +50,26 @@ namespace WindowsFormsApp3
                 
                 groupBox1.Visible = false;
                 btnLogin.Text = "Login";
+                LogTransaction = String.Format("Transaction Date: {0} | User: {1}  | Logged Off", DateTime.Now, txtUName.Text);
+                log.LogDB(LogTransaction);
                 conn.Close();
             }
             else
 
             try
-            {
-                conn.Open();
+                {
+                    using (SqlCommand cmd = new SqlCommand("returnPassword", conn))
+                    {
+                        conn.Open();
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Username", txtUName.Text);
 
 
-                SqlCommand cmd = new SqlCommand();
+                        //cmd.Connection = conn;
+                        rdr = (string)cmd.ExecuteScalar();
 
-                cmd.CommandText = "SELECT Password FROM Admin where Username = '"+ username +"'";
-                cmd.Connection = conn;
-                rdr = (string)cmd.ExecuteScalar();
-        
-
+                    }
             }
             catch (Exception ex)
             {
@@ -77,12 +84,17 @@ namespace WindowsFormsApp3
 
                         groupBox1.Visible = true;
                         btnLogin.Text = "Logout";
+                        LogTransaction = String.Format("Transaction Date: {0} | User: {1}  | Logged On", DateTime.Now, txtUName.Text);
+                        log.LogDB(LogTransaction);
 
                     }
                     else
                     {
-                        MessageBox.Show("Please try Again");
+                        MessageBox.Show("Please Try Again");
+                        LogTransaction = String.Format("Transaction Date: {0} | User: {1}  | Attempted to Access", DateTime.Now, txtUName.Text);
+                        log.LogDB(LogTransaction);
                     }
+
                     conn.Close();
             }
 

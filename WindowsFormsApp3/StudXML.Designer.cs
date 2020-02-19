@@ -86,18 +86,18 @@
             // 
             // txtFN
             // 
-            this.txtFN.Location = new System.Drawing.Point(641, 378);
+            this.txtFN.Location = new System.Drawing.Point(640, 346);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(132, 20);
             this.txtFN.TabIndex = 4;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(659, 352);
+            this.btnSave.Location = new System.Drawing.Point(659, 310);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 20);
             this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save XML As";
+            this.btnSave.Text = "Save to XML";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -278,7 +278,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(659, 323);
+            this.btnAdd.Location = new System.Drawing.Point(659, 280);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(91, 23);
             this.btnAdd.TabIndex = 51;
@@ -288,9 +288,9 @@
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(554, 72);
+            this.btnView.Location = new System.Drawing.Point(560, 71);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(113, 24);
+            this.btnView.Size = new System.Drawing.Size(91, 24);
             this.btnView.TabIndex = 52;
             this.btnView.Text = "View from XML";
             this.btnView.UseVisualStyleBackColor = true;
