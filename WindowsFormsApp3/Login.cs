@@ -49,6 +49,8 @@ namespace WindowsFormsApp3
             {
                 
                 groupBox1.Visible = false;
+                rtextLogger.Visible = false;
+                btnRefresh.Visible = false;
                 btnLogin.Text = "Login";
                 LogTransaction = String.Format("Transaction Date: {0} | User: {1}  | Logged Off", DateTime.Now, txtUName.Text);
                 log.LogDB(LogTransaction);
