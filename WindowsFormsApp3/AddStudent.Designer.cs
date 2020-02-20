@@ -89,7 +89,7 @@
             // rbAddStudent
             // 
             this.rbAddStudent.AutoSize = true;
-            this.rbAddStudent.Location = new System.Drawing.Point(41, 20);
+            this.rbAddStudent.Location = new System.Drawing.Point(19, 18);
             this.rbAddStudent.Name = "rbAddStudent";
             this.rbAddStudent.Size = new System.Drawing.Size(84, 17);
             this.rbAddStudent.TabIndex = 2;
@@ -101,7 +101,7 @@
             // rbEditStudent
             // 
             this.rbEditStudent.AutoSize = true;
-            this.rbEditStudent.Location = new System.Drawing.Point(41, 43);
+            this.rbEditStudent.Location = new System.Drawing.Point(19, 41);
             this.rbEditStudent.Name = "rbEditStudent";
             this.rbEditStudent.Size = new System.Drawing.Size(83, 17);
             this.rbEditStudent.TabIndex = 3;
@@ -113,7 +113,7 @@
             // rbDeleteStudent
             // 
             this.rbDeleteStudent.AutoSize = true;
-            this.rbDeleteStudent.Location = new System.Drawing.Point(41, 66);
+            this.rbDeleteStudent.Location = new System.Drawing.Point(19, 64);
             this.rbDeleteStudent.Name = "rbDeleteStudent";
             this.rbDeleteStudent.Size = new System.Drawing.Size(96, 17);
             this.rbDeleteStudent.TabIndex = 4;
@@ -212,7 +212,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(359, 217);
+            this.label10.Location = new System.Drawing.Point(359, 224);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 10;
@@ -358,7 +358,7 @@
             "Accounting",
             "French",
             "The Physics of Star Trek"});
-            this.comboCourse.Location = new System.Drawing.Point(497, 211);
+            this.comboCourse.Location = new System.Drawing.Point(497, 221);
             this.comboCourse.Name = "comboCourse";
             this.comboCourse.Size = new System.Drawing.Size(100, 21);
             this.comboCourse.TabIndex = 32;
@@ -391,12 +391,11 @@
             this.groupBox1.Controls.Add(this.rbDeleteStudent);
             this.groupBox1.Controls.Add(this.rbAddStudent);
             this.groupBox1.Controls.Add(this.rbEditStudent);
-            this.groupBox1.Location = new System.Drawing.Point(627, 12);
+            this.groupBox1.Location = new System.Drawing.Point(664, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(174, 97);
+            this.groupBox1.Size = new System.Drawing.Size(133, 97);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // groupBox2
             // 
@@ -411,12 +410,11 @@
             // 
             this.groupBox3.Controls.Add(this.rdoBtnPost);
             this.groupBox3.Controls.Add(this.rdoBtnUnder);
-            this.groupBox3.Location = new System.Drawing.Point(473, 156);
+            this.groupBox3.Location = new System.Drawing.Point(497, 156);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(185, 49);
+            this.groupBox3.Size = new System.Drawing.Size(100, 59);
             this.groupBox3.TabIndex = 37;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Level";
             // 
             // AddStudent
             // 

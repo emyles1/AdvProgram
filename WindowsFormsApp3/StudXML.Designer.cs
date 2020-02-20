@@ -56,8 +56,8 @@
             this.DBcomboCourse = new System.Windows.Forms.ComboBox();
             this.DBcomboCounty = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdbtnPost = new System.Windows.Forms.RadioButton();
             this.rdbtnUnder = new System.Windows.Forms.RadioButton();
+            this.rdbtnPost = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -337,18 +337,6 @@
             this.groupBox2.Size = new System.Drawing.Size(87, 68);
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Level";
-            // 
-            // rdbtnPost
-            // 
-            this.rdbtnPost.AutoSize = true;
-            this.rdbtnPost.Location = new System.Drawing.Point(3, 16);
-            this.rdbtnPost.Name = "rdbtnPost";
-            this.rdbtnPost.Size = new System.Drawing.Size(67, 17);
-            this.rdbtnPost.TabIndex = 0;
-            this.rdbtnPost.TabStop = true;
-            this.rdbtnPost.Text = "Postgrad";
-            this.rdbtnPost.UseVisualStyleBackColor = true;
             // 
             // rdbtnUnder
             // 
@@ -360,6 +348,17 @@
             this.rdbtnUnder.TabStop = true;
             this.rdbtnUnder.Text = "Undergrad";
             this.rdbtnUnder.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnPost
+            // 
+            this.rdbtnPost.AutoSize = true;
+            this.rdbtnPost.Location = new System.Drawing.Point(3, 16);
+            this.rdbtnPost.Name = "rdbtnPost";
+            this.rdbtnPost.Size = new System.Drawing.Size(67, 17);
+            this.rdbtnPost.TabIndex = 0;
+            this.rdbtnPost.TabStop = true;
+            this.rdbtnPost.Text = "Postgrad";
+            this.rdbtnPost.UseVisualStyleBackColor = true;
             // 
             // StudXML
             // 

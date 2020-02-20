@@ -305,7 +305,7 @@ namespace WindowsFormsApp3
                 //DBCounty.Enabled = true;
                 //DBCourse.Enabled = false;
                 comboCounty.Enabled = true;
-                comboCourse.Enabled = true;
+                comboCourse.Enabled = false;
                 //comboxLevel.Enabled = true;
                 txtStudID.Enabled = false;
             }
@@ -336,7 +336,7 @@ namespace WindowsFormsApp3
                 label9.Text = "Edit Level";
                 label10.Text = "Edit Course";
                 label11.Text = "Load Student ID";
-                btnSubmit.Text = "Edit";
+                btnSubmit.Text = "Edit Student";
 
                 DBAddress1.Enabled = false;
                 DBFirstName.Enabled = false;
@@ -348,7 +348,7 @@ namespace WindowsFormsApp3
                 //DBCounty.Enabled = false;
                 comboCounty.Enabled = false;
                 //DBCourse.Enabled = false;
-                comboCourse.Enabled = true;
+                comboCourse.Enabled = false;
                 //comboxLevel.Enabled = false;
             }
 
@@ -368,7 +368,7 @@ namespace WindowsFormsApp3
                 label8.Text = "Add County";
                 label9.Text = "Add Level";
                 label10.Text = "Add Course";
-                btnSubmit.Text = "Add";
+                btnSubmit.Text = "Add Student";
 
                 DBAddress1.Enabled = true;
                 DBFirstName.Enabled = true;
@@ -401,7 +401,7 @@ namespace WindowsFormsApp3
                 label9.Text = "Delete Level";
                 label10.Text = "Delete Course";
                 label11.Text = "Load Student ID";
-                btnSubmit.Text = "Delete";
+                btnSubmit.Text = "Delete Student";
 
                 DBAddress1.Enabled = false;
                 DBFirstName.Enabled = false;
