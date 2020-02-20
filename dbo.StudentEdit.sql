@@ -1,4 +1,4 @@
-﻿Create PROCEDURE Student ( 
+﻿Create PROCEDURE StudentEdit ( 
                                          @ID Int,
 										 @FirstName    VARCHAR(20),  
                                           @Surname     VARCHAR(20),  
