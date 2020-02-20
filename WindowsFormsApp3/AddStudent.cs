@@ -25,9 +25,11 @@ namespace WindowsFormsApp3
         class cc : Clear { }
         Clear cleartxt = new cc();
         Level Lvl = new Level();
-        
-        
-        
+        bool flag;
+
+
+
+
         public AddStudent(SqlConnection conn, int m)
         {
            
@@ -275,9 +277,19 @@ namespace WindowsFormsApp3
                         comboCourse.Text = reader["Course"].ToString();
                         
                     }
-                    if (DBFirstName.Text == "")
+
+                    if (txtStudID.Text == "" && DBFirstName.Text == "")
+                    {
+                        MessageBox.Show("Please enter a student ID");
+                        //adding a flag so items wont get updated to disabled when no data pulled
+                        flag = true;
+                        
+                       
+                    }
+                    else if (txtStudID.Text == txtStudID.Text && DBFirstName.Text == "")
                     {
                         MessageBox.Show("Student doesnt exist");
+                        flag = true;
                         cleartxt.ClearTxt(this);
                     }
                     
@@ -292,9 +304,14 @@ namespace WindowsFormsApp3
             }
 
 
-
-            if (rbEditStudent.Checked && txtStudID.Text != null)
-            {
+           // if (flag)
+           // {
+               // flag = true;
+            //}
+             //if(rbEditStudent.Checked && txtStudID.Text != null)
+                if (rbEditStudent.Checked && flag==false)
+                //else
+                {
                 DBAddress1.Enabled = true;
                 DBFirstName.Enabled = false;
                 DBSurname.Enabled = false;
@@ -308,6 +325,7 @@ namespace WindowsFormsApp3
                 comboCourse.Enabled = false;
                 //comboxLevel.Enabled = true;
                 txtStudID.Enabled = false;
+                flag = false;
             }
         }
 
