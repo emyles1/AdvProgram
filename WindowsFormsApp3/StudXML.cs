@@ -75,17 +75,6 @@ namespace WindowsFormsApp3
                             }
                             DBcomboCourse.Text = reader["Course"].ToString();
 
-                            /*DBFirstName.Text = reader["FirstName"].ToString();
-                            DBSurname.Text = reader["Surname"].ToString();
-                            DBEmail.Text = reader["Email"].ToString();
-                            DBPhone.Text = reader["Phone"].ToString();
-                            DBAddress1.Text = reader["AddressL1"].ToString();
-                            DBAddress2.Text = reader["AddressL2"].ToString();
-                            DBCity.Text = reader["City"].ToString();
-                            DBCounty.Text = reader["County"].ToString();
-                            comboxLevel.Text = reader["level"].ToString();
-                            DBCourse.Text = reader["Course"].ToString();*/
-
                             //Create logging string and send to LogDB Method
                             LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1}  | Name: {2} {3} | Loaded from StudXML Page ", DateTime.Now, ID, DBFirstName.Text, DBSurname.Text);
                             log.LogDB(LogTransaction);

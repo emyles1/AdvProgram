@@ -27,9 +27,6 @@ namespace WindowsFormsApp3
         Level Lvl = new Level();
         bool flag;
 
-
-
-
         public AddStudent(SqlConnection conn, int m)
         {
            
@@ -118,7 +115,6 @@ namespace WindowsFormsApp3
                             cmd.Parameters.AddWithValue("@Level", EnumLevel.Undergrad);;
                         }
 
-                        //cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
                         cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
 
                         if (conn.State == ConnectionState.Closed
@@ -155,17 +151,14 @@ namespace WindowsFormsApp3
                         cmd.CommandType = CommandType.StoredProcedure;
                         // add one or more parameters
                         cmd.Parameters.AddWithValue("@ID", txtStudID.Text);
-                        //cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
-                        cmd.Parameters.AddWithValue("@FirstName", EnumLevel.Postgrade);
+                        cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
                         cmd.Parameters.AddWithValue("@Surname", DBSurname.Text);
                         cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
                         cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
                         cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
                         cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
-                        // cmd.Parameters.AddWithValue("@County", DBCounty.Text);
                         cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
-                        //cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
                         if (rdoBtnPost.Checked)
                         {
                             cmd.Parameters.AddWithValue("@Level", EnumLevel.Postgrade);
@@ -192,8 +185,6 @@ namespace WindowsFormsApp3
 
                     conn.Close();
                 }
-
-              
 
             }
 
@@ -304,13 +295,8 @@ namespace WindowsFormsApp3
             }
 
 
-            //if (flag)
-            //{
-               // flag = true;
-            //}
-             //if(rbEditStudent.Checked && txtStudID.Text != null)
+
                 if (rbEditStudent.Checked && txtStudID.Text != null && flag ==false)
-                //else
                 {
                 DBAddress1.Enabled = true;
                 DBFirstName.Enabled = false;
