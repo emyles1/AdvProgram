@@ -126,7 +126,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(511, 281);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(86, 23);
-            this.btnSubmit.TabIndex = 22;
+            this.btnSubmit.TabIndex = 23;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -257,7 +257,7 @@
             this.btnBack.Location = new System.Drawing.Point(44, 14);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 25;
+            this.btnBack.TabIndex = 26;
             this.btnBack.Text = "< Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -268,7 +268,7 @@
             this.btnLoadStd.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoadStd.Name = "btnLoadStd";
             this.btnLoadStd.Size = new System.Drawing.Size(86, 26);
-            this.btnLoadStd.TabIndex = 26;
+            this.btnLoadStd.TabIndex = 22;
             this.btnLoadStd.Text = "Load Student";
             this.btnLoadStd.UseVisualStyleBackColor = true;
             this.btnLoadStd.Click += new System.EventHandler(this.btnLoadStd_Click);
@@ -302,7 +302,7 @@
             this.btnViewDB.Location = new System.Drawing.Point(693, 358);
             this.btnViewDB.Name = "btnViewDB";
             this.btnViewDB.Size = new System.Drawing.Size(95, 48);
-            this.btnViewDB.TabIndex = 30;
+            this.btnViewDB.TabIndex = 24;
             this.btnViewDB.Text = "View/Refresh Database";
             this.btnViewDB.UseVisualStyleBackColor = true;
             this.btnViewDB.Click += new System.EventHandler(this.btnViewDB_Click);
@@ -346,7 +346,7 @@
             this.comboCounty.Location = new System.Drawing.Point(497, 129);
             this.comboCounty.Name = "comboCounty";
             this.comboCounty.Size = new System.Drawing.Size(100, 21);
-            this.comboCounty.TabIndex = 31;
+            this.comboCounty.TabIndex = 19;
             // 
             // comboCourse
             // 
@@ -360,7 +360,7 @@
             this.comboCourse.Location = new System.Drawing.Point(497, 221);
             this.comboCourse.Name = "comboCourse";
             this.comboCourse.Size = new System.Drawing.Size(100, 21);
-            this.comboCourse.TabIndex = 32;
+            this.comboCourse.TabIndex = 21;
             // 
             // rdoBtnPost
             // 
@@ -393,7 +393,7 @@
             this.groupBox1.Location = new System.Drawing.Point(664, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(133, 97);
-            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
             // groupBox3
@@ -403,7 +403,7 @@
             this.groupBox3.Location = new System.Drawing.Point(497, 156);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(100, 59);
-            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             // 
             // AddStudent

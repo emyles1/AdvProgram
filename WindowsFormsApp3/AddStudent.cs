@@ -219,8 +219,6 @@ namespace WindowsFormsApp3
             cleartxt.ClearTxt(this);
             labelValue();
 
-
-
         }
 
         private void btnBack_Click(object sender, EventArgs e)

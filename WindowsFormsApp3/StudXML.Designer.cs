@@ -66,7 +66,7 @@
             this.btnLoad.Location = new System.Drawing.Point(419, 72);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(113, 24);
-            this.btnLoad.TabIndex = 0;
+            this.btnLoad.TabIndex = 12;
             this.btnLoad.Text = "Load from Database";
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
@@ -92,14 +92,14 @@
             this.txtFN.Location = new System.Drawing.Point(640, 346);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(132, 20);
-            this.txtFN.TabIndex = 4;
+            this.txtFN.TabIndex = 16;
             // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(659, 310);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 20);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 15;
             this.btnSave.Text = "Save to XML";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -109,7 +109,7 @@
             this.btnBack.Location = new System.Drawing.Point(65, 30);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 6;
+            this.btnBack.TabIndex = 17;
             this.btnBack.Text = "< Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -119,28 +119,28 @@
             this.DBAddress1.Location = new System.Drawing.Point(268, 303);
             this.DBAddress1.Name = "DBAddress1";
             this.DBAddress1.Size = new System.Drawing.Size(100, 20);
-            this.DBAddress1.TabIndex = 43;
+            this.DBAddress1.TabIndex = 6;
             // 
             // DBAddress2
             // 
             this.DBAddress2.Location = new System.Drawing.Point(268, 342);
             this.DBAddress2.Name = "DBAddress2";
             this.DBAddress2.Size = new System.Drawing.Size(100, 20);
-            this.DBAddress2.TabIndex = 44;
+            this.DBAddress2.TabIndex = 7;
             // 
             // DBEmail
             // 
             this.DBEmail.Location = new System.Drawing.Point(268, 232);
             this.DBEmail.Name = "DBEmail";
             this.DBEmail.Size = new System.Drawing.Size(100, 20);
-            this.DBEmail.TabIndex = 41;
+            this.DBEmail.TabIndex = 4;
             // 
             // DBPhone
             // 
             this.DBPhone.Location = new System.Drawing.Point(268, 271);
             this.DBPhone.Name = "DBPhone";
             this.DBPhone.Size = new System.Drawing.Size(100, 20);
-            this.DBPhone.TabIndex = 42;
+            this.DBPhone.TabIndex = 5;
             // 
             // label10
             // 
@@ -219,14 +219,14 @@
             this.DBFirstName.Location = new System.Drawing.Point(268, 154);
             this.DBFirstName.Name = "DBFirstName";
             this.DBFirstName.Size = new System.Drawing.Size(100, 20);
-            this.DBFirstName.TabIndex = 39;
+            this.DBFirstName.TabIndex = 2;
             // 
             // DBSurname
             // 
             this.DBSurname.Location = new System.Drawing.Point(268, 193);
             this.DBSurname.Name = "DBSurname";
             this.DBSurname.Size = new System.Drawing.Size(100, 20);
-            this.DBSurname.TabIndex = 40;
+            this.DBSurname.TabIndex = 3;
             // 
             // label2
             // 
@@ -251,14 +251,14 @@
             this.DBCity.Location = new System.Drawing.Point(488, 160);
             this.DBCity.Name = "DBCity";
             this.DBCity.Size = new System.Drawing.Size(100, 20);
-            this.DBCity.TabIndex = 47;
+            this.DBCity.TabIndex = 8;
             // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(659, 280);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(91, 23);
-            this.btnAdd.TabIndex = 51;
+            this.btnAdd.TabIndex = 14;
             this.btnAdd.Text = "Add to XML";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -268,7 +268,7 @@
             this.btnView.Location = new System.Drawing.Point(560, 71);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(91, 24);
-            this.btnView.TabIndex = 52;
+            this.btnView.TabIndex = 13;
             this.btnView.Text = "View from XML";
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
@@ -285,7 +285,7 @@
             this.DBcomboCourse.Location = new System.Drawing.Point(488, 296);
             this.DBcomboCourse.Name = "DBcomboCourse";
             this.DBcomboCourse.Size = new System.Drawing.Size(100, 21);
-            this.DBcomboCourse.TabIndex = 53;
+            this.DBcomboCourse.TabIndex = 11;
             // 
             // DBcomboCounty
             // 
@@ -326,7 +326,7 @@
             this.DBcomboCounty.Location = new System.Drawing.Point(488, 198);
             this.DBcomboCounty.Name = "DBcomboCounty";
             this.DBcomboCounty.Size = new System.Drawing.Size(100, 21);
-            this.DBcomboCounty.TabIndex = 54;
+            this.DBcomboCounty.TabIndex = 9;
             // 
             // groupBox2
             // 
@@ -335,7 +335,7 @@
             this.groupBox2.Location = new System.Drawing.Point(488, 222);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(87, 68);
-            this.groupBox2.TabIndex = 56;
+            this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
             // rdbtnUnder
