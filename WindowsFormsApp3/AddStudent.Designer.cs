@@ -49,9 +49,6 @@
             this.DBAddress1 = new System.Windows.Forms.TextBox();
             this.DBAddress2 = new System.Windows.Forms.TextBox();
             this.DBCity = new System.Windows.Forms.TextBox();
-            this.DBCounty = new System.Windows.Forms.TextBox();
-            this.DBCourse = new System.Windows.Forms.TextBox();
-            this.comboxLevel = new System.Windows.Forms.ComboBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnLoadStd = new System.Windows.Forms.Button();
             this.txtStudID = new System.Windows.Forms.TextBox();
@@ -62,7 +59,13 @@
             this.comboCourse = new System.Windows.Forms.ComboBox();
             this.rdoBtnPost = new System.Windows.Forms.RadioButton();
             this.rdoBtnUnder = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -86,7 +89,7 @@
             // rbAddStudent
             // 
             this.rbAddStudent.AutoSize = true;
-            this.rbAddStudent.Location = new System.Drawing.Point(654, 14);
+            this.rbAddStudent.Location = new System.Drawing.Point(41, 20);
             this.rbAddStudent.Name = "rbAddStudent";
             this.rbAddStudent.Size = new System.Drawing.Size(84, 17);
             this.rbAddStudent.TabIndex = 2;
@@ -98,7 +101,7 @@
             // rbEditStudent
             // 
             this.rbEditStudent.AutoSize = true;
-            this.rbEditStudent.Location = new System.Drawing.Point(654, 37);
+            this.rbEditStudent.Location = new System.Drawing.Point(41, 43);
             this.rbEditStudent.Name = "rbEditStudent";
             this.rbEditStudent.Size = new System.Drawing.Size(83, 17);
             this.rbEditStudent.TabIndex = 3;
@@ -110,7 +113,7 @@
             // rbDeleteStudent
             // 
             this.rbDeleteStudent.AutoSize = true;
-            this.rbDeleteStudent.Location = new System.Drawing.Point(654, 60);
+            this.rbDeleteStudent.Location = new System.Drawing.Point(41, 66);
             this.rbDeleteStudent.Name = "rbDeleteStudent";
             this.rbDeleteStudent.Size = new System.Drawing.Size(96, 17);
             this.rbDeleteStudent.TabIndex = 4;
@@ -250,32 +253,6 @@
             this.DBCity.Size = new System.Drawing.Size(100, 20);
             this.DBCity.TabIndex = 18;
             // 
-            // DBCounty
-            // 
-            this.DBCounty.Location = new System.Drawing.Point(497, 129);
-            this.DBCounty.Name = "DBCounty";
-            this.DBCounty.Size = new System.Drawing.Size(100, 20);
-            this.DBCounty.TabIndex = 19;
-            // 
-            // DBCourse
-            // 
-            this.DBCourse.Location = new System.Drawing.Point(497, 210);
-            this.DBCourse.Name = "DBCourse";
-            this.DBCourse.Size = new System.Drawing.Size(100, 20);
-            this.DBCourse.TabIndex = 21;
-            // 
-            // comboxLevel
-            // 
-            this.comboxLevel.FormattingEnabled = true;
-            this.comboxLevel.Items.AddRange(new object[] {
-            "6",
-            "7",
-            "8"});
-            this.comboxLevel.Location = new System.Drawing.Point(497, 168);
-            this.comboxLevel.Name = "comboxLevel";
-            this.comboxLevel.Size = new System.Drawing.Size(100, 21);
-            this.comboxLevel.TabIndex = 20;
-            // 
             // btnBack
             // 
             this.btnBack.Location = new System.Drawing.Point(44, 14);
@@ -367,7 +344,7 @@
             "Westmeath",
             "Wexford",
             "Wicklow"});
-            this.comboCounty.Location = new System.Drawing.Point(603, 128);
+            this.comboCounty.Location = new System.Drawing.Point(497, 129);
             this.comboCounty.Name = "comboCounty";
             this.comboCounty.Size = new System.Drawing.Size(100, 21);
             this.comboCounty.TabIndex = 31;
@@ -381,7 +358,7 @@
             "Accounting",
             "French",
             "The Physics of Star Trek"});
-            this.comboCourse.Location = new System.Drawing.Point(603, 210);
+            this.comboCourse.Location = new System.Drawing.Point(497, 211);
             this.comboCourse.Name = "comboCourse";
             this.comboCourse.Size = new System.Drawing.Size(100, 21);
             this.comboCourse.TabIndex = 32;
@@ -389,7 +366,7 @@
             // rdoBtnPost
             // 
             this.rdoBtnPost.AutoSize = true;
-            this.rdoBtnPost.Location = new System.Drawing.Point(607, 169);
+            this.rdoBtnPost.Location = new System.Drawing.Point(15, 13);
             this.rdoBtnPost.Name = "rdoBtnPost";
             this.rdoBtnPost.Size = new System.Drawing.Size(69, 17);
             this.rdoBtnPost.TabIndex = 33;
@@ -401,7 +378,7 @@
             // rdoBtnUnder
             // 
             this.rdoBtnUnder.AutoSize = true;
-            this.rdoBtnUnder.Location = new System.Drawing.Point(682, 168);
+            this.rdoBtnUnder.Location = new System.Drawing.Point(15, 32);
             this.rdoBtnUnder.Name = "rdoBtnUnder";
             this.rdoBtnUnder.Size = new System.Drawing.Size(77, 17);
             this.rdoBtnUnder.TabIndex = 34;
@@ -409,13 +386,46 @@
             this.rdoBtnUnder.Text = "UnderGrad";
             this.rdoBtnUnder.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbDeleteStudent);
+            this.groupBox1.Controls.Add(this.rbAddStudent);
+            this.groupBox1.Controls.Add(this.rbEditStudent);
+            this.groupBox1.Location = new System.Drawing.Point(627, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(174, 97);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(399, 17);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(8, 13);
+            this.groupBox2.TabIndex = 36;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rdoBtnPost);
+            this.groupBox3.Controls.Add(this.rdoBtnUnder);
+            this.groupBox3.Location = new System.Drawing.Point(473, 156);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(185, 49);
+            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Level";
+            // 
             // AddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.rdoBtnUnder);
-            this.Controls.Add(this.rdoBtnPost);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboCourse);
             this.Controls.Add(this.comboCounty);
             this.Controls.Add(this.btnViewDB);
@@ -424,10 +434,7 @@
             this.Controls.Add(this.txtStudID);
             this.Controls.Add(this.btnLoadStd);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.comboxLevel);
-            this.Controls.Add(this.DBCourse);
             this.Controls.Add(this.DBCity);
-            this.Controls.Add(this.DBCounty);
             this.Controls.Add(this.DBAddress1);
             this.Controls.Add(this.DBAddress2);
             this.Controls.Add(this.DBEmail);
@@ -443,15 +450,16 @@
             this.Controls.Add(this.DBFirstName);
             this.Controls.Add(this.DBSurname);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.rbDeleteStudent);
-            this.Controls.Add(this.rbEditStudent);
-            this.Controls.Add(this.rbAddStudent);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddStudent";
             this.Text = "AddStudent";
             this.Load += new System.EventHandler(this.AddStudent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,9 +491,6 @@
         public System.Windows.Forms.TextBox DBAddress1;
         public System.Windows.Forms.TextBox DBAddress2;
         public System.Windows.Forms.TextBox DBCity;
-        public System.Windows.Forms.TextBox DBCounty;
-        public System.Windows.Forms.TextBox DBCourse;
-        public System.Windows.Forms.ComboBox comboxLevel;
         public System.Windows.Forms.TextBox txtStudID;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnViewDB;
@@ -493,5 +498,9 @@
         public System.Windows.Forms.ComboBox comboCourse;
         private System.Windows.Forms.RadioButton rdoBtnPost;
         private System.Windows.Forms.RadioButton rdoBtnUnder;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -53,7 +53,29 @@ namespace WindowsFormsApp3
                             //I have to fill the ID Value again as the ClearTxt() method removes it and that method is requried to ensure 
                             //previous fields are cleared in the event of an empty student returned
                             txtID.Text = ID;
+
                             DBFirstName.Text = reader["FirstName"].ToString();
+                            DBSurname.Text = reader["Surname"].ToString();
+                            DBEmail.Text = reader["Email"].ToString();
+                            DBPhone.Text = reader["Phone"].ToString();
+                            DBAddress1.Text = reader["AddressL1"].ToString();
+                            DBAddress2.Text = reader["AddressL2"].ToString();
+                            DBCity.Text = reader["City"].ToString();
+                            DBcomboCounty.Text = reader["County"].ToString();
+                            string rdoBtnPoster = reader["level"].ToString();
+
+                            if (rdoBtnPoster == "0")
+                            {
+                                rdbtnPost.Checked = true;
+                            }
+                            else
+                            {
+
+                                rdbtnUnder.Checked = true;
+                            }
+                            DBcomboCourse.Text = reader["Course"].ToString();
+
+                            /*DBFirstName.Text = reader["FirstName"].ToString();
                             DBSurname.Text = reader["Surname"].ToString();
                             DBEmail.Text = reader["Email"].ToString();
                             DBPhone.Text = reader["Phone"].ToString();
@@ -62,7 +84,7 @@ namespace WindowsFormsApp3
                             DBCity.Text = reader["City"].ToString();
                             DBCounty.Text = reader["County"].ToString();
                             comboxLevel.Text = reader["level"].ToString();
-                            DBCourse.Text = reader["Course"].ToString();
+                            DBCourse.Text = reader["Course"].ToString();*/
 
                             //Create logging string and send to LogDB Method
                             LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1}  | Name: {2} {3} | Loaded from StudXML Page ", DateTime.Now, ID, DBFirstName.Text, DBSurname.Text);
@@ -117,7 +139,7 @@ namespace WindowsFormsApp3
                 dt.Columns.Add("Address Line 2");
                 dt.Columns.Add("City");
                 dt.Columns.Add("County");
-                dt.Columns.Add("Level");
+               // dt.Columns.Add("Level");
                 dt.Columns.Add("Course");
                 ds.Tables.Add(dt);
             }
@@ -132,9 +154,9 @@ namespace WindowsFormsApp3
             row["Address Line 1"] = DBAddress1.Text;
             row["Address Line 2"] = DBAddress2.Text;
             row["City"] = DBCity.Text;
-            row["County"] = DBCounty.Text;
-            row["Level"] = comboxLevel.Text;
-            row["Course"] = DBCourse.Text;
+            row["County"] = DBcomboCounty.Text;
+           // row["Level"] = comboxLevel.Text;
+            row["Course"] = DBcomboCourse.Text;
 
 
             dt.Rows.Add(row);
@@ -173,9 +195,9 @@ namespace WindowsFormsApp3
                             DBAddress1.Text = reader["AddressL1"].ToString();
                             DBAddress2.Text = reader["AddressL2"].ToString();
                             DBCity.Text = reader["City"].ToString();
-                            DBCounty.Text = reader["County"].ToString();
-                            comboxLevel.Text = reader["level"].ToString();
-                            DBCourse.Text = reader["Course"].ToString();
+                            DBcomboCounty.Text = reader["County"].ToString();
+                            //DBcomboxLevel.Text = reader["level"].ToString();
+                            DBcomboCourse.Text = reader["Course"].ToString();
                         }
                     }
                 }

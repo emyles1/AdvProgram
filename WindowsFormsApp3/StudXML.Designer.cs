@@ -50,12 +50,15 @@
             this.DBSurname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboxLevel = new System.Windows.Forms.ComboBox();
-            this.DBCourse = new System.Windows.Forms.TextBox();
             this.DBCity = new System.Windows.Forms.TextBox();
-            this.DBCounty = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
+            this.DBcomboCourse = new System.Windows.Forms.ComboBox();
+            this.DBcomboCounty = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbtnPost = new System.Windows.Forms.RadioButton();
+            this.rdbtnUnder = new System.Windows.Forms.RadioButton();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -142,7 +145,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(417, 280);
+            this.label10.Location = new System.Drawing.Point(416, 299);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 38;
@@ -243,38 +246,12 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "label1";
             // 
-            // comboxLevel
-            // 
-            this.comboxLevel.FormattingEnabled = true;
-            this.comboxLevel.Items.AddRange(new object[] {
-            "6",
-            "7",
-            "8"});
-            this.comboxLevel.Location = new System.Drawing.Point(488, 238);
-            this.comboxLevel.Name = "comboxLevel";
-            this.comboxLevel.Size = new System.Drawing.Size(100, 21);
-            this.comboxLevel.TabIndex = 49;
-            // 
-            // DBCourse
-            // 
-            this.DBCourse.Location = new System.Drawing.Point(488, 280);
-            this.DBCourse.Name = "DBCourse";
-            this.DBCourse.Size = new System.Drawing.Size(100, 20);
-            this.DBCourse.TabIndex = 50;
-            // 
             // DBCity
             // 
             this.DBCity.Location = new System.Drawing.Point(488, 160);
             this.DBCity.Name = "DBCity";
             this.DBCity.Size = new System.Drawing.Size(100, 20);
             this.DBCity.TabIndex = 47;
-            // 
-            // DBCounty
-            // 
-            this.DBCounty.Location = new System.Drawing.Point(488, 199);
-            this.DBCounty.Name = "DBCounty";
-            this.DBCounty.Size = new System.Drawing.Size(100, 20);
-            this.DBCounty.TabIndex = 48;
             // 
             // btnAdd
             // 
@@ -296,17 +273,105 @@
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
+            // DBcomboCourse
+            // 
+            this.DBcomboCourse.FormattingEnabled = true;
+            this.DBcomboCourse.Items.AddRange(new object[] {
+            "Computing",
+            "Science",
+            "Accounting",
+            "French",
+            "The Physics of Star Trek"});
+            this.DBcomboCourse.Location = new System.Drawing.Point(488, 296);
+            this.DBcomboCourse.Name = "DBcomboCourse";
+            this.DBcomboCourse.Size = new System.Drawing.Size(100, 21);
+            this.DBcomboCourse.TabIndex = 53;
+            // 
+            // DBcomboCounty
+            // 
+            this.DBcomboCounty.FormattingEnabled = true;
+            this.DBcomboCounty.Items.AddRange(new object[] {
+            "Antrim",
+            "Armagh",
+            "Carlow",
+            "Cavan",
+            "Clare",
+            "Cork",
+            "Derry",
+            "Donegal",
+            "Down",
+            "Dublin",
+            "Fermanagh",
+            "Galway",
+            "Kerry",
+            "Kildare",
+            "Kilkenny",
+            "Laois",
+            "Leitrim",
+            "Limerick",
+            "Longford",
+            "Louth",
+            "Mayo",
+            "Meath",
+            "Monaghan",
+            "Offaly",
+            "Roscommon",
+            "Sligo",
+            "Tipperary",
+            "Tyrone",
+            "Waterford",
+            "Westmeath",
+            "Wexford",
+            "Wicklow"});
+            this.DBcomboCounty.Location = new System.Drawing.Point(488, 198);
+            this.DBcomboCounty.Name = "DBcomboCounty";
+            this.DBcomboCounty.Size = new System.Drawing.Size(100, 21);
+            this.DBcomboCounty.TabIndex = 54;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rdbtnUnder);
+            this.groupBox2.Controls.Add(this.rdbtnPost);
+            this.groupBox2.Location = new System.Drawing.Point(488, 222);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(87, 68);
+            this.groupBox2.TabIndex = 56;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Level";
+            // 
+            // rdbtnPost
+            // 
+            this.rdbtnPost.AutoSize = true;
+            this.rdbtnPost.Location = new System.Drawing.Point(3, 16);
+            this.rdbtnPost.Name = "rdbtnPost";
+            this.rdbtnPost.Size = new System.Drawing.Size(67, 17);
+            this.rdbtnPost.TabIndex = 0;
+            this.rdbtnPost.TabStop = true;
+            this.rdbtnPost.Text = "Postgrad";
+            this.rdbtnPost.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnUnder
+            // 
+            this.rdbtnUnder.AutoSize = true;
+            this.rdbtnUnder.Location = new System.Drawing.Point(3, 39);
+            this.rdbtnUnder.Name = "rdbtnUnder";
+            this.rdbtnUnder.Size = new System.Drawing.Size(75, 17);
+            this.rdbtnUnder.TabIndex = 1;
+            this.rdbtnUnder.TabStop = true;
+            this.rdbtnUnder.Text = "Undergrad";
+            this.rdbtnUnder.UseVisualStyleBackColor = true;
+            // 
             // StudXML
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.DBcomboCounty);
+            this.Controls.Add(this.DBcomboCourse);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.comboxLevel);
-            this.Controls.Add(this.DBCourse);
             this.Controls.Add(this.DBCity);
-            this.Controls.Add(this.DBCounty);
             this.Controls.Add(this.DBAddress1);
             this.Controls.Add(this.DBAddress2);
             this.Controls.Add(this.DBEmail);
@@ -331,6 +396,8 @@
             this.Controls.Add(this.btnLoad);
             this.Name = "StudXML";
             this.Text = "StudXML";
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,11 +427,13 @@
         private System.Windows.Forms.TextBox DBSurname;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboxLevel;
-        private System.Windows.Forms.TextBox DBCourse;
         private System.Windows.Forms.TextBox DBCity;
-        private System.Windows.Forms.TextBox DBCounty;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.ComboBox DBcomboCourse;
+        private System.Windows.Forms.ComboBox DBcomboCounty;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rdbtnUnder;
+        private System.Windows.Forms.RadioButton rdbtnPost;
     }
 }

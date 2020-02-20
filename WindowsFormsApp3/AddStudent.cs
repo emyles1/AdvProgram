@@ -24,8 +24,14 @@ namespace WindowsFormsApp3
         SqlConnection conn;
         class cc : Clear { }
         Clear cleartxt = new cc();
+        Level Lvl = new Level();
+        
+        
+        
         public AddStudent(SqlConnection conn, int m)
         {
+           
+      
             mode = m;
             InitializeComponent();
             this.conn = conn;
@@ -96,11 +102,20 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
                         cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
                         cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
-                        cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
+                        cmd.Parameters.AddWithValue("@AddressL2", DBAddress1.Text);
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
-                       // cmd.Parameters.AddWithValue("@County", DBCounty.Text);
-                        cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
-                        cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
+
+                       cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
+
+                        if (rdoBtnPost.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Level", EnumLevel.Postgrade); 
+                        }
+                        else if (rdoBtnUnder.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Level", EnumLevel.Undergrad);;
+                        }
+
                         //cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
                         cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
 
@@ -132,12 +147,14 @@ namespace WindowsFormsApp3
 
                     using (SqlCommand cmd = new SqlCommand("StudentEdit", conn))
                     {
+                       
                         conn.Open();
                         // set command type
                         cmd.CommandType = CommandType.StoredProcedure;
                         // add one or more parameters
                         cmd.Parameters.AddWithValue("@ID", txtStudID.Text);
-                        cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
+                        //cmd.Parameters.AddWithValue("@FirstName", DBFirstName.Text);
+                        cmd.Parameters.AddWithValue("@FirstName", EnumLevel.Postgrade);
                         cmd.Parameters.AddWithValue("@Surname", DBSurname.Text);
                         cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
                         cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
@@ -146,8 +163,16 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
                         // cmd.Parameters.AddWithValue("@County", DBCounty.Text);
                         cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
-                        cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
-                        //cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
+                        //cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
+                        if (rdoBtnPost.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Level", EnumLevel.Postgrade);
+                        }
+                        else if (rdoBtnUnder.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@Level", EnumLevel.Undergrad); ;
+                        }
+                     
                         cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
 
                         if (conn.State == ConnectionState.Closed
@@ -218,6 +243,9 @@ namespace WindowsFormsApp3
 
             try
             {
+
+                //change this to a stored procedure
+
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
                 cmd.Parameters.AddWithValue("@ID", ID);
@@ -232,10 +260,18 @@ namespace WindowsFormsApp3
                         DBAddress1.Text = reader["AddressL1"].ToString();
                         DBAddress2.Text = reader["AddressL2"].ToString();
                         DBCity.Text = reader["City"].ToString();
-                        //DBCounty.Text = reader["County"].ToString();
                         comboCounty.Text = reader["County"].ToString();
-                        comboxLevel.Text = reader["level"].ToString();
-                        //DBCourse.Text = reader["Course"].ToString();
+                        string rdoBtnPoster = reader["level"].ToString();
+              
+                         if (rdoBtnPoster=="0")
+                        {
+                            rdoBtnPost.Checked=true;                     
+                        }
+                        else 
+                        {
+                            
+                            rdoBtnUnder.Checked = true;
+                        }
                         comboCourse.Text = reader["Course"].ToString();
                         
                     }
@@ -269,8 +305,8 @@ namespace WindowsFormsApp3
                 //DBCounty.Enabled = true;
                 //DBCourse.Enabled = false;
                 comboCounty.Enabled = true;
-                comboCourse.Enabled = false;
-                comboxLevel.Enabled = true;
+                comboCourse.Enabled = true;
+                //comboxLevel.Enabled = true;
                 txtStudID.Enabled = false;
             }
         }
@@ -313,7 +349,7 @@ namespace WindowsFormsApp3
                 comboCounty.Enabled = false;
                 //DBCourse.Enabled = false;
                 comboCourse.Enabled = true;
-                comboxLevel.Enabled = false;
+                //comboxLevel.Enabled = false;
             }
 
             else if (value == 2)
@@ -345,7 +381,7 @@ namespace WindowsFormsApp3
                 comboCounty.Enabled = true;
                 //DBCourse.Enabled = true;
                 comboCourse.Enabled = true;
-                comboxLevel.Enabled = true;
+                //comboxLevel.Enabled = true;
             }
 
             else if (value == 3)
@@ -378,7 +414,7 @@ namespace WindowsFormsApp3
                 comboCounty.Enabled = false;
                 //DBCourse.Enabled = false;
                 comboCourse.Enabled = false;
-                comboxLevel.Enabled = false;
+                //comboxLevel.Enabled = false;
             }
 
         }
