@@ -140,8 +140,8 @@ namespace WindowsFormsApp3
             row["Surname"] = DBSurname.Text;
             row["Email"] = DBEmail.Text;
             row["Phone"] = DBPhone.Text;
-            row["Address Line 1"] = DBAddress1.Text;
-            row["Address Line 2"] = DBAddress2.Text;
+            row["Address_Line_1"] = DBAddress1.Text;
+            row["Address_Line_2"] = DBAddress2.Text;
             row["City"] = DBCity.Text;
             row["County"] = DBcomboCounty.Text;
            // row["Level"] = comboxLevel.Text;
