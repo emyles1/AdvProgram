@@ -27,7 +27,7 @@ namespace WindowsFormsApp3
            
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
             
-            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger.txt");
+            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger2.txt");
             btnRefresh.Visible = false;
             
             groupBox1.Visible = false;

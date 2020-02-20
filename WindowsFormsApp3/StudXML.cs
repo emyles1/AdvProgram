@@ -64,6 +64,7 @@ namespace WindowsFormsApp3
                             comboxLevel.Text = reader["level"].ToString();
                             DBCourse.Text = reader["Course"].ToString();
 
+                            //Create logging string and send to LogDB Method
                             LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1}  | Name: {2} {3} | Loaded from StudXML Page ", DateTime.Now, ID, DBFirstName.Text, DBSurname.Text);
                             log.LogDB(LogTransaction);
                         }
@@ -72,6 +73,7 @@ namespace WindowsFormsApp3
                 }
                 finally
                 {
+                    //Ensure the returned search actually displays some data
                     if (DBFirstName.Text == "")
                     {
                         LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1}  | Not Found | ", DateTime.Now, ID, DBFirstName.Text, DBSurname.Text);
@@ -89,8 +91,7 @@ namespace WindowsFormsApp3
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtFN.Text == "")
-            {
-             
+            { 
                 txtFN.Text = "Student.xml";
             }
             ds.WriteXml(txtFN.Text);
@@ -100,6 +101,8 @@ namespace WindowsFormsApp3
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
+            //Create XML for student
             DataTable dt;
             if (ds == null)
             {

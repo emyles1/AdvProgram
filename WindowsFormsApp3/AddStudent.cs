@@ -98,9 +98,11 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
                         cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
-                        cmd.Parameters.AddWithValue("@County", DBCounty.Text);
+                       // cmd.Parameters.AddWithValue("@County", DBCounty.Text);
+                        cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
                         cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
-                        cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
+                        //cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
+                        cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
 
                         if (conn.State == ConnectionState.Closed
                             || conn.State == ConnectionState.Broken)
@@ -142,9 +144,11 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
                         cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
-                        cmd.Parameters.AddWithValue("@County", DBCounty.Text);
+                        // cmd.Parameters.AddWithValue("@County", DBCounty.Text);
+                        cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
                         cmd.Parameters.AddWithValue("@Level", comboxLevel.SelectedItem);
-                        cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
+                        //cmd.Parameters.AddWithValue("@Course", DBCourse.Text);
+                        cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
 
                         if (conn.State == ConnectionState.Closed
                             || conn.State == ConnectionState.Broken)
@@ -228,11 +232,14 @@ namespace WindowsFormsApp3
                         DBAddress1.Text = reader["AddressL1"].ToString();
                         DBAddress2.Text = reader["AddressL2"].ToString();
                         DBCity.Text = reader["City"].ToString();
-                        DBCounty.Text = reader["County"].ToString();
+                        //DBCounty.Text = reader["County"].ToString();
+                        comboCounty.Text = reader["County"].ToString();
                         comboxLevel.Text = reader["level"].ToString();
-                        DBCourse.Text = reader["Course"].ToString();
+                        //DBCourse.Text = reader["Course"].ToString();
+                        comboCourse.Text = reader["Course"].ToString();
+                        
                     }
-                    if(DBFirstName.Text == "")
+                    if (DBFirstName.Text == "")
                     {
                         MessageBox.Show("Student doesnt exist");
                         cleartxt.ClearTxt(this);
@@ -253,14 +260,16 @@ namespace WindowsFormsApp3
             if (rbEditStudent.Checked && txtStudID.Text != null)
             {
                 DBAddress1.Enabled = true;
-                DBFirstName.Enabled = true;
-                DBSurname.Enabled = true;
+                DBFirstName.Enabled = false;
+                DBSurname.Enabled = false;
                 DBEmail.Enabled = true;
                 DBPhone.Enabled = true;
                 DBAddress2.Enabled = true;
                 DBCity.Enabled = true;
-                DBCounty.Enabled = true;
-                DBCourse.Enabled = true;
+                //DBCounty.Enabled = true;
+                //DBCourse.Enabled = false;
+                comboCounty.Enabled = true;
+                comboCourse.Enabled = false;
                 comboxLevel.Enabled = true;
                 txtStudID.Enabled = false;
             }
@@ -300,8 +309,10 @@ namespace WindowsFormsApp3
                 DBPhone.Enabled = false;
                 DBAddress2.Enabled = false;
                 DBCity.Enabled = false;
-                DBCounty.Enabled = false;
-                DBCourse.Enabled = false;
+                //DBCounty.Enabled = false;
+                comboCounty.Enabled = false;
+                //DBCourse.Enabled = false;
+                comboCourse.Enabled = true;
                 comboxLevel.Enabled = false;
             }
 
@@ -330,8 +341,10 @@ namespace WindowsFormsApp3
                 DBPhone.Enabled = true;
                 DBAddress2.Enabled = true;
                 DBCity.Enabled = true;
-                DBCounty.Enabled = true;
-                DBCourse.Enabled = true;
+                //DBCounty.Enabled = true;
+                comboCounty.Enabled = true;
+                //DBCourse.Enabled = true;
+                comboCourse.Enabled = true;
                 comboxLevel.Enabled = true;
             }
 
@@ -361,8 +374,10 @@ namespace WindowsFormsApp3
                 DBPhone.Enabled = false;
                 DBAddress2.Enabled = false;
                 DBCity.Enabled = false;
-                DBCounty.Enabled = false;
-                DBCourse.Enabled = false;
+                //DBCounty.Enabled = false;
+                comboCounty.Enabled = false;
+                //DBCourse.Enabled = false;
+                comboCourse.Enabled = false;
                 comboxLevel.Enabled = false;
             }
 

@@ -58,6 +58,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnViewDB = new System.Windows.Forms.Button();
+            this.comboCounty = new System.Windows.Forms.ComboBox();
+            this.comboCourse = new System.Windows.Forms.ComboBox();
+            this.rdoBtnPost = new System.Windows.Forms.RadioButton();
+            this.rdoBtnUnder = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -327,11 +331,93 @@
             this.btnViewDB.UseVisualStyleBackColor = true;
             this.btnViewDB.Click += new System.EventHandler(this.btnViewDB_Click);
             // 
+            // comboCounty
+            // 
+            this.comboCounty.FormattingEnabled = true;
+            this.comboCounty.Items.AddRange(new object[] {
+            "Antrim",
+            "Armagh",
+            "Carlow",
+            "Cavan",
+            "Clare",
+            "Cork",
+            "Derry",
+            "Donegal",
+            "Down",
+            "Dublin",
+            "Fermanagh",
+            "Galway",
+            "Kerry",
+            "Kildare",
+            "Kilkenny",
+            "Laois",
+            "Leitrim",
+            "Limerick",
+            "Longford",
+            "Louth",
+            "Mayo",
+            "Meath",
+            "Monaghan",
+            "Offaly",
+            "Roscommon",
+            "Sligo",
+            "Tipperary",
+            "Tyrone",
+            "Waterford",
+            "Westmeath",
+            "Wexford",
+            "Wicklow"});
+            this.comboCounty.Location = new System.Drawing.Point(603, 128);
+            this.comboCounty.Name = "comboCounty";
+            this.comboCounty.Size = new System.Drawing.Size(100, 21);
+            this.comboCounty.TabIndex = 31;
+            // 
+            // comboCourse
+            // 
+            this.comboCourse.FormattingEnabled = true;
+            this.comboCourse.Items.AddRange(new object[] {
+            "Computing",
+            "Science",
+            "Accounting",
+            "French",
+            "The Physics of Star Trek"});
+            this.comboCourse.Location = new System.Drawing.Point(603, 210);
+            this.comboCourse.Name = "comboCourse";
+            this.comboCourse.Size = new System.Drawing.Size(100, 21);
+            this.comboCourse.TabIndex = 32;
+            // 
+            // rdoBtnPost
+            // 
+            this.rdoBtnPost.AutoSize = true;
+            this.rdoBtnPost.Location = new System.Drawing.Point(607, 169);
+            this.rdoBtnPost.Name = "rdoBtnPost";
+            this.rdoBtnPost.Size = new System.Drawing.Size(69, 17);
+            this.rdoBtnPost.TabIndex = 33;
+            this.rdoBtnPost.TabStop = true;
+            this.rdoBtnPost.Text = "PostGrad";
+            this.rdoBtnPost.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.rdoBtnPost.UseVisualStyleBackColor = true;
+            // 
+            // rdoBtnUnder
+            // 
+            this.rdoBtnUnder.AutoSize = true;
+            this.rdoBtnUnder.Location = new System.Drawing.Point(682, 168);
+            this.rdoBtnUnder.Name = "rdoBtnUnder";
+            this.rdoBtnUnder.Size = new System.Drawing.Size(77, 17);
+            this.rdoBtnUnder.TabIndex = 34;
+            this.rdoBtnUnder.TabStop = true;
+            this.rdoBtnUnder.Text = "UnderGrad";
+            this.rdoBtnUnder.UseVisualStyleBackColor = true;
+            // 
             // AddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rdoBtnUnder);
+            this.Controls.Add(this.rdoBtnPost);
+            this.Controls.Add(this.comboCourse);
+            this.Controls.Add(this.comboCounty);
             this.Controls.Add(this.btnViewDB);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label11);
@@ -403,5 +489,9 @@
         public System.Windows.Forms.TextBox txtStudID;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnViewDB;
+        public System.Windows.Forms.ComboBox comboCounty;
+        public System.Windows.Forms.ComboBox comboCourse;
+        private System.Windows.Forms.RadioButton rdoBtnPost;
+        private System.Windows.Forms.RadioButton rdoBtnUnder;
     }
 }

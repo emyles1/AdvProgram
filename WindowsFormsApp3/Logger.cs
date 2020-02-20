@@ -13,7 +13,7 @@ namespace WindowsFormsApp3
         public void LogDB(string s)
         {
             // System.IO.File.WriteAllText(@"C:\Users\eamon\Desktop\Logger.txt", s);
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\eamon\Desktop\Logger.txt", true))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\eamon\Desktop\Logger2.txt", true))
             {
                 file.WriteLine(s);
             }
