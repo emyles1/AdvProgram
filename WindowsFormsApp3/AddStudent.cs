@@ -304,12 +304,12 @@ namespace WindowsFormsApp3
             }
 
 
-           // if (flag)
-           // {
+            //if (flag)
+            //{
                // flag = true;
             //}
              //if(rbEditStudent.Checked && txtStudID.Text != null)
-                if (rbEditStudent.Checked && flag==false)
+                if (rbEditStudent.Checked && txtStudID.Text != null && flag ==false)
                 //else
                 {
                 DBAddress1.Enabled = true;
@@ -325,7 +325,7 @@ namespace WindowsFormsApp3
                 comboCourse.Enabled = false;
                 //comboxLevel.Enabled = true;
                 txtStudID.Enabled = false;
-                flag = false;
+               
             }
         }
 
