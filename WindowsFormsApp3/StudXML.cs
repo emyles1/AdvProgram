@@ -124,11 +124,11 @@ namespace WindowsFormsApp3
                 dt.Columns.Add("Surname");
                 dt.Columns.Add("Email");
                 dt.Columns.Add("Phone");
-                dt.Columns.Add("Address Line 1");
-                dt.Columns.Add("Address Line 2");
+                dt.Columns.Add("AddressL1");
+                dt.Columns.Add("AddressL2");
                 dt.Columns.Add("City");
                 dt.Columns.Add("County");
-               // dt.Columns.Add("Level");
+                dt.Columns.Add("Level");
                 dt.Columns.Add("Course");
                 ds.Tables.Add(dt);
             }
@@ -140,14 +140,19 @@ namespace WindowsFormsApp3
             row["Surname"] = DBSurname.Text;
             row["Email"] = DBEmail.Text;
             row["Phone"] = DBPhone.Text;
-            row["Address_Line_1"] = DBAddress1.Text;
-            row["Address_Line_2"] = DBAddress2.Text;
+            row["AddressL1"] = DBAddress1.Text;
+            row["AddressL2"] = DBAddress2.Text;
             row["City"] = DBCity.Text;
             row["County"] = DBcomboCounty.Text;
-           // row["Level"] = comboxLevel.Text;
+            if (rdbtnPost.Checked)
+            {
+                row["Level"] = "Postgrad";
+            }
+            else if (rdbtnUnder.Checked)
+            {
+                row["Level"] = "Undergrad";
+            }
             row["Course"] = DBcomboCourse.Text;
-
-
             dt.Rows.Add(row);
             dt.AcceptChanges();
 
@@ -157,49 +162,6 @@ namespace WindowsFormsApp3
         private void btnView_Click(object sender, EventArgs e)
         {
             
-
-            string ID = txtID.Text;
-            cleartxt.ClearTxt(this);
-            using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
-            {
-                try
-                {
-                    conn.Open();
-                    // set command type
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    // add one or more parameters
-                    cmd.Parameters.AddWithValue("@IDStud", ID);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        //read the data
-                        while (reader.Read())
-                        {
-                            //I have to fill the ID Value again as the ClearTxt() method removes it and that method is requried to ensure 
-                            //previous fields are cleared in the event of an empty student returned
-                            txtID.Text = ID;
-                            DBFirstName.Text = reader["FirstName"].ToString();
-                            DBSurname.Text = reader["Surname"].ToString();
-                            DBEmail.Text = reader["Email"].ToString();
-                            DBPhone.Text = reader["Phone"].ToString();
-                            DBAddress1.Text = reader["AddressL1"].ToString();
-                            DBAddress2.Text = reader["AddressL2"].ToString();
-                            DBCity.Text = reader["City"].ToString();
-                            DBcomboCounty.Text = reader["County"].ToString();
-                            //DBcomboxLevel.Text = reader["level"].ToString();
-                            DBcomboCourse.Text = reader["Course"].ToString();
-                        }
-                    }
-                }
-                finally
-                {
-                    if (DBFirstName.Text == "")
-                        MessageBox.Show("Record not found");
-                    conn.Close();
-                }
-                
-            }
-
-          
         }
     
     }
