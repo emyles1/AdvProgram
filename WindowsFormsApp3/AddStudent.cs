@@ -11,9 +11,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 
-/*event handler for checking textboxes
- //hps://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.textboxbase.clear?view=netframework-4.8https:
-    */
 namespace WindowsFormsApp3
 {
     public partial class AddStudent : Form
@@ -25,12 +22,12 @@ namespace WindowsFormsApp3
         class cc : Clear { }
         Clear cleartxt = new cc();
         Level Lvl = new Level();
+        
         bool flag;
 
         public AddStudent(SqlConnection conn, int m)
         {
-           
-      
+
             mode = m;
             InitializeComponent();
             this.conn = conn;
@@ -49,7 +46,7 @@ namespace WindowsFormsApp3
 
         private void AddStudent_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void rbAddStudent_CheckedChanged(object sender, EventArgs e)
@@ -303,22 +300,18 @@ namespace WindowsFormsApp3
                 DBPhone.Enabled = true;
                 DBAddress2.Enabled = true;
                 DBCity.Enabled = true;
-                //DBCounty.Enabled = true;
-                //DBCourse.Enabled = false;
                 comboCounty.Enabled = true;
                 comboCourse.Enabled = false;
-                //comboxLevel.Enabled = true;
                 txtStudID.Enabled = false;
                
             }
         }
 
 
-
+        
         public void labelValue()
         {
             int value = mode;
-            //better to user a switch statment here
             if (value == 1)
             {
 
@@ -326,6 +319,7 @@ namespace WindowsFormsApp3
                 txtStudID.Enabled = true;
                 btnLoadStd.Visible = true;
                 label11.Visible = true;
+
 
                 label1.Text = "Edit First Name";
                 label2.Text = "Edit Surname";
@@ -340,18 +334,17 @@ namespace WindowsFormsApp3
                 label11.Text = "Load Student ID";
                 btnSubmit.Text = "Edit Student";
 
-                DBAddress1.Enabled = false;
+
+               DBAddress1.Enabled = false;
                 DBFirstName.Enabled = false;
                 DBSurname.Enabled = false;
                 DBEmail.Enabled = false;
                 DBPhone.Enabled = false;
                 DBAddress2.Enabled = false;
                 DBCity.Enabled = false;
-                //DBCounty.Enabled = false;
                 comboCounty.Enabled = false;
-                //DBCourse.Enabled = false;
                 comboCourse.Enabled = false;
-                //comboxLevel.Enabled = false;
+
             }
 
             else if (value == 2)
@@ -379,11 +372,9 @@ namespace WindowsFormsApp3
                 DBPhone.Enabled = true;
                 DBAddress2.Enabled = true;
                 DBCity.Enabled = true;
-                //DBCounty.Enabled = true;
                 comboCounty.Enabled = true;
-                //DBCourse.Enabled = true;
                 comboCourse.Enabled = true;
-                //comboxLevel.Enabled = true;
+
             }
 
             else if (value == 3)
@@ -412,11 +403,9 @@ namespace WindowsFormsApp3
                 DBPhone.Enabled = false;
                 DBAddress2.Enabled = false;
                 DBCity.Enabled = false;
-                //DBCounty.Enabled = false;
                 comboCounty.Enabled = false;
-                //DBCourse.Enabled = false;
                 comboCourse.Enabled = false;
-                //comboxLevel.Enabled = false;
+
             }
 
         }
