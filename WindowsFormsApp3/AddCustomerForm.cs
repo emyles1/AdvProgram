@@ -25,7 +25,7 @@ namespace WindowsFormsApp3
             try
             {
                 SqlCommand cmd = new SqlCommand("INSERT INTO FirstName " +
-                    "VALUES(@ID,@Name)",conn);
+                    "VALUES(@ID,@Name)", conn);
                 cmd.Parameters.AddWithValue("@ID", textBoxID.Text);
                 cmd.Parameters.AddWithValue("@Name", textBoxName.Text);
 

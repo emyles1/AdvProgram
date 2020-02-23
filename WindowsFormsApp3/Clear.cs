@@ -12,7 +12,7 @@ namespace WindowsFormsApp3
         public void ClearTxt(Form f)
         {
 
-            foreach(Control c in f.Controls)
+            foreach (Control c in f.Controls)
             {
                 if (c is TextBox)
                     (c as TextBox).Clear();

@@ -23,7 +23,7 @@ namespace WindowsFormsApp3
 
         private void btnAddAdmin_Click(object sender, EventArgs e)
         {
-             
+
 
             try
             {

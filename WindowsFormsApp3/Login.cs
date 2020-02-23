@@ -24,12 +24,12 @@ namespace WindowsFormsApp3
             //Look at this implementation between Form 1 and AddCustomerForm. Guessing that this needs to be only initalized once then passed to the rest
             //at this moment its initialized on the Form 1 form and here on the login form
             InitializeComponent();
-           
+
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
-            
+
             rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger2.txt");
             btnRefresh.Visible = false;
-            
+
             groupBox1.Visible = false;
             rtextLogger.Visible = false;
         }
@@ -41,13 +41,13 @@ namespace WindowsFormsApp3
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-           
+
             string username = txtUName.Text;
             string password = txtPass.Text;
 
             if (btnLogin.Text == "Logout")
             {
-                
+
                 groupBox1.Visible = false;
                 rtextLogger.Visible = false;
                 btnRefresh.Visible = false;
@@ -58,7 +58,7 @@ namespace WindowsFormsApp3
             }
             else
 
-            try
+                try
                 {
                     using (SqlCommand cmd = new SqlCommand("returnPassword", conn))
                     {
@@ -72,14 +72,14 @@ namespace WindowsFormsApp3
                         rdr = (string)cmd.ExecuteScalar();
 
                     }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-                
-            }
-            finally
-            {
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+
+                }
+                finally
+                {
 
                     if (rdr == txtPass.Text)
                     {
@@ -98,7 +98,7 @@ namespace WindowsFormsApp3
                     }
 
                     conn.Close();
-            }
+                }
 
 
 
@@ -114,24 +114,24 @@ namespace WindowsFormsApp3
 
         private void btnNewStudent_Click(object sender, EventArgs e)
         {
-            new AddStudent(conn,2).ShowDialog();
+            new AddStudent(conn, 2).ShowDialog();
         }
 
 
 
         private void btnEditStudent_Click(object sender, EventArgs e)
         {
-          
-            new AddStudent(conn,1).ShowDialog();
-           
+
+            new AddStudent(conn, 1).ShowDialog();
+
 
 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            new AddStudent(conn,3).ShowDialog();
-            
+            new AddStudent(conn, 3).ShowDialog();
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -148,4 +148,4 @@ namespace WindowsFormsApp3
         }
     }
 }
-    
+

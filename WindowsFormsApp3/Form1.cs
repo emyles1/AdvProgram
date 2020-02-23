@@ -19,7 +19,7 @@ namespace WindowsFormsApp3
         {
             InitializeComponent();
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
-            
+
         }
 
         private void buttonCreateTables_Click(object sender, EventArgs e)
@@ -28,28 +28,28 @@ namespace WindowsFormsApp3
             {
                 conn.Open();
                 MessageBox.Show("Connected");
-                 SqlCommand cmd = new SqlCommand("CREATE TABLE Student(" +
-                     "ID int IDENTITY(1,1) PRIMARY KEY, FirstName VARCHAR(20), Surname VARCHAR(20), Email VARCHAR(20), Phone  VARCHAR(10), AddressL1 VARCHAR (50), AddressL2 VARCHAR (50), City VARCHAR (20), County VARCHAR (20), Level INT, Course VARCHAR (50) );", conn);
-                 cmd.ExecuteNonQuery();
-                 /*cmd = new SqlCommand("CREATE TABLE Surname(" +
-                     "ID INT PRIMARY KEY, Surname VARCHAR(20));", conn);
-                 cmd.ExecuteNonQuery();
-                 cmd = new SqlCommand("CREATE TABLE Admin(" +
-                    "ID INT PRIMARY KEY, Pass VARCHAR(20));", conn);
-                //cmd.ExecuteNonQuery();
-                /* cmd = new SqlCommand("CREATE TABLE Product(" +
-                    "ID INT PRIMARY KEY, Name VARCHAR(20), Price INT);", conn);
-                 cmd.ExecuteNonQuery();
-                 cmd = new SqlCommand("CREATE TABLE Orders(" +
-                    "ID INT PRIMARY KEY, OrderDate DATE, Customer INT," +
-                    "FOREIGN KEY(Customer) REFERENCES Customer(ID));", conn);
-                 cmd.ExecuteNonQuery();
-                 cmd = new SqlCommand("CREATE TABLE OrderLine(" +
-                    "OrderID INT, ProdID INT, Qty INT," +
-                    "FOREIGN KEY(ProdID) REFERENCES Product(ID)," +
-                    "FOREIGN KEY(OrderID) REFERENCES Orders(ID)," +
-                    "PRIMARY KEY(ProdID,OrderID));", conn);
-                 cmd.ExecuteNonQuery();*/
+                SqlCommand cmd = new SqlCommand("CREATE TABLE Student(" +
+                    "ID int IDENTITY(1,1) PRIMARY KEY, FirstName VARCHAR(20), Surname VARCHAR(20), Email VARCHAR(20), Phone  VARCHAR(10), AddressL1 VARCHAR (50), AddressL2 VARCHAR (50), City VARCHAR (20), County VARCHAR (20), Level INT, Course VARCHAR (50) );", conn);
+                cmd.ExecuteNonQuery();
+                /*cmd = new SqlCommand("CREATE TABLE Surname(" +
+                    "ID INT PRIMARY KEY, Surname VARCHAR(20));", conn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("CREATE TABLE Admin(" +
+                   "ID INT PRIMARY KEY, Pass VARCHAR(20));", conn);
+               //cmd.ExecuteNonQuery();
+               /* cmd = new SqlCommand("CREATE TABLE Product(" +
+                   "ID INT PRIMARY KEY, Name VARCHAR(20), Price INT);", conn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("CREATE TABLE Orders(" +
+                   "ID INT PRIMARY KEY, OrderDate DATE, Customer INT," +
+                   "FOREIGN KEY(Customer) REFERENCES Customer(ID));", conn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("CREATE TABLE OrderLine(" +
+                   "OrderID INT, ProdID INT, Qty INT," +
+                   "FOREIGN KEY(ProdID) REFERENCES Product(ID)," +
+                   "FOREIGN KEY(OrderID) REFERENCES Orders(ID)," +
+                   "PRIMARY KEY(ProdID,OrderID));", conn);
+                cmd.ExecuteNonQuery();*/
 
             }
             catch (Exception ex)
@@ -107,7 +107,7 @@ namespace WindowsFormsApp3
                 //cmd.Parameters.AddWithValue("@ID", 1);
                 cmd.Parameters.AddWithValue("@Username", "Admin");
                 cmd.Parameters.AddWithValue("@Password", "Admin");
-               
+
                 cmd.ExecuteNonQuery();
 
             }

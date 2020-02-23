@@ -9,7 +9,7 @@ namespace WindowsFormsApp3
 {
     class Logger
     {
-        
+
         public void LogDB(string s)
         {
             // System.IO.File.WriteAllText(@"C:\Users\eamon\Desktop\Logger.txt", s);
@@ -17,7 +17,7 @@ namespace WindowsFormsApp3
             {
                 file.WriteLine(s);
             }
-           
+
         }
 
     }
