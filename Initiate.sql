@@ -1,5 +1,4 @@
-﻿use StudentDB
-
+﻿USE StudentDB
 
 SET ANSI_NULLS ON
 GO
@@ -11,7 +10,7 @@ CREATE TABLE Admin(ID int IDENTITY(1,1) PRIMARY KEY, Username VARCHAR(20), Passw
 
 GO
 
-SET IDENTITY_INSERT Admin ON;
+SET IDENTITY_INSERT Admin OFF;
 GO
 
 INSERT INTO Admin VALUES('Admin','Admin')
@@ -22,7 +21,7 @@ CREATE TABLE Student (ID int IDENTITY(1,1) PRIMARY KEY, FirstName VARCHAR(20), S
 
 GO
 
-SET IDENTITY_INSERT Student ON;
+SET IDENTITY_INSERT Student OFF;
 GO
 
 Insert INTO Student Values ('Eamon', 'Myles', 'eamonmyles@gmail.com', '0876500000', '18', 'Annfield Crescent', 'Dublin', 'Dublin',1, 'French')
