@@ -98,7 +98,7 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@Email", DBEmail.Text);
                         cmd.Parameters.AddWithValue("@Phone", DBPhone.Text);
                         cmd.Parameters.AddWithValue("@AddressL1", DBAddress1.Text);
-                        cmd.Parameters.AddWithValue("@AddressL2", DBAddress1.Text);
+                        cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
 
                        cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
@@ -156,6 +156,7 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
                         cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
+                        cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
                         if (rdoBtnPost.Checked)
                         {
                             cmd.Parameters.AddWithValue("@Level", EnumLevel.Postgrade);
@@ -165,7 +166,7 @@ namespace WindowsFormsApp3
                             cmd.Parameters.AddWithValue("@Level", EnumLevel.Undergrad); ;
                         }
                      
-                        cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
+                        
 
                         if (conn.State == ConnectionState.Closed
                             || conn.State == ConnectionState.Broken)

@@ -137,7 +137,7 @@ namespace WindowsFormsApp3
         private void btnRefresh_Click(object sender, EventArgs e)
         {
 
-            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger.txt");
+            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger2.txt");
 
 
         }
