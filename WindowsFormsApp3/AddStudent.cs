@@ -15,15 +15,21 @@ namespace WindowsFormsApp3
 {
     public partial class AddStudent : Form
     {
-        Logger log = new Logger();
+
+       //Variables 
         String LogTransaction = "";
         int mode;
+        bool flag;
+
+        //Sql Connection Object
         SqlConnection conn;
+
+        //Various class initiations
+        Logger log = new Logger();
         class cc : Clear { }
         Clear cleartxt = new cc();
-        Level Lvl = new Level();
+
         
-        bool flag;
        
 
         public AddStudent(SqlConnection conn, int m)
@@ -45,10 +51,7 @@ namespace WindowsFormsApp3
         }
 
 
-        private void AddStudent_Load(object sender, EventArgs e)
-        {
-            
-        }
+      
 
         private void rbAddStudent_CheckedChanged(object sender, EventArgs e)
         {
@@ -129,6 +132,7 @@ namespace WindowsFormsApp3
                 catch (Exception)
                 {
                     MessageBox.Show("Please ensure all fields have been filled");
+                    conn.Close();
                 }
 
                 

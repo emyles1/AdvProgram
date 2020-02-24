@@ -18,6 +18,8 @@ namespace WindowsFormsApp3
                     (c as TextBox).Clear();
                 else if (c is ComboBox)
                     (c as ComboBox).SelectedItem = null;
+                else if (c is ComboBox)
+                    (c as RadioButton).Checked = false;
             }
         }
 
