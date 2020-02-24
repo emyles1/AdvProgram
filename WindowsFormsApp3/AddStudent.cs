@@ -24,6 +24,7 @@ namespace WindowsFormsApp3
         Level Lvl = new Level();
         
         bool flag;
+       
 
         public AddStudent(SqlConnection conn, int m)
         {
@@ -79,7 +80,8 @@ namespace WindowsFormsApp3
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-           
+
+            
 
             if (rbAddStudent.Checked)
             {
@@ -229,18 +231,21 @@ namespace WindowsFormsApp3
         {
 
             string ID = txtStudID.Text;
-
+            cleartxt.ClearTxt(this);
+            using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
+              
             try
             {
 
-                //change this to a stored procedure
-
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from Student where id=@ID", conn);
-                cmd.Parameters.AddWithValue("@ID", ID);
+                cmd.CommandType = CommandType.StoredProcedure;
+             // set command type
+                cmd.Parameters.AddWithValue("@IDStud", ID);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    if (reader.Read())
+                        //read the data
+                        if (reader.Read())
+                            //if (reader.Read())
                     {
                         DBFirstName.Text = reader["FirstName"].ToString();
                         DBSurname.Text = reader["Surname"].ToString();
@@ -290,8 +295,6 @@ namespace WindowsFormsApp3
                 conn.Close();
             }
 
-
-
                 if (rbEditStudent.Checked && txtStudID.Text != null && flag ==false)
                 {
                 DBAddress1.Enabled = true;
@@ -309,7 +312,52 @@ namespace WindowsFormsApp3
         }
 
 
-        
+        private void btnViewDB_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+
+            try
+            {
+                //sql connection object
+                // using (SqlConnection conn = new SqlConnection(conn))
+                {
+
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT * FROM Student;";
+
+                    //define the SqlCommand object
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+
+                    //Set the SqlDataAdapter object
+                    SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
+
+                    //define dataset
+                    DataSet ds = new DataSet();
+
+                    //fill dataset with query results
+                    dAdapter.Fill(ds);
+
+                    //set DataGridView control to read-only
+                    dataGridView1.ReadOnly = true;
+
+                    //set the DataGridView control's data source/data table
+                    dataGridView1.DataSource = ds.Tables[0];
+
+
+                    //close connection
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+        }
+
+
+
         public void labelValue()
         {
             int value = mode;
@@ -409,50 +457,6 @@ namespace WindowsFormsApp3
 
             }
 
-        }
-
-        private void btnViewDB_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Visible = true;
-
-            try
-            {
-                //sql connection object
-                // using (SqlConnection conn = new SqlConnection(conn))
-                {
-
-                    //retrieve the SQL Server instance version
-                    string query = @"SELECT * FROM Student;";
-
-                    //define the SqlCommand object
-                    SqlCommand cmd = new SqlCommand(query, conn);
-
-
-                    //Set the SqlDataAdapter object
-                    SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
-
-                    //define dataset
-                    DataSet ds = new DataSet();
-
-                    //fill dataset with query results
-                    dAdapter.Fill(ds);
-
-                    //set DataGridView control to read-only
-                    dataGridView1.ReadOnly = true;
-
-                    //set the DataGridView control's data source/data table
-                    dataGridView1.DataSource = ds.Tables[0];
-
-
-                    //close connection
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                //display error message
-                MessageBox.Show("Exception: " + ex.Message);
-            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

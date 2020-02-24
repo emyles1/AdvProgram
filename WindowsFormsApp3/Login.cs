@@ -18,7 +18,7 @@ namespace WindowsFormsApp3
         SqlConnection conn;
         string rdr;
         String LogTransaction = "";
-        Logger log = new Logger();
+        Logger log =  new Logger();
         public Login()
         {
             //Look at this implementation between Form 1 and AddCustomerForm. Guessing that this needs to be only initalized once then passed to the rest
@@ -27,7 +27,10 @@ namespace WindowsFormsApp3
 
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
 
-            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger2.txt");
+         
+
+            //Displays the log file in the UX
+            
             btnRefresh.Visible = false;
 
             groupBox1.Visible = false;
@@ -137,7 +140,7 @@ namespace WindowsFormsApp3
         private void btnRefresh_Click(object sender, EventArgs e)
         {
 
-            rtextLogger.Text = File.ReadAllText(@"C: \Users\eamon\Desktop\Logger2.txt");
+            rtextLogger.Text = File.ReadAllText(@"Logger.txt");
 
 
         }
