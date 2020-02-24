@@ -81,8 +81,6 @@ namespace WindowsFormsApp3
         private void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            
-
             if (rbAddStudent.Checked)
             {
 
@@ -138,7 +136,6 @@ namespace WindowsFormsApp3
             else if(rbEditStudent.Checked)
             {
 
-               
                 try
                 {
 
@@ -167,9 +164,7 @@ namespace WindowsFormsApp3
                         {
                             cmd.Parameters.AddWithValue("@Level", EnumLevel.Undergrad); ;
                         }
-                     
-                        
-
+                            
                         if (conn.State == ConnectionState.Closed
                             || conn.State == ConnectionState.Broken)
                             conn.Open();
@@ -182,10 +177,8 @@ namespace WindowsFormsApp3
                 {
                     LogTransaction = String.Format("Transaction Date: {0} | Student: {1} {2} | Edited", DateTime.Now, DBFirstName.Text, DBSurname.Text);
                     log.LogDB(LogTransaction);
-
                     conn.Close();
                 }
-
             }
 
             else if(rbDeleteStudent.Checked)
@@ -231,7 +224,7 @@ namespace WindowsFormsApp3
         {
 
             string ID = txtStudID.Text;
-            cleartxt.ClearTxt(this);
+            //cleartxt.ClearTxt(this);
             using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
               
             try
