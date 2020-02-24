@@ -25,6 +25,8 @@ namespace WindowsFormsApp3
             //at this moment its initialized on the Form 1 form and here on the login form
             InitializeComponent();
 
+
+
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
 
          
@@ -113,6 +115,8 @@ namespace WindowsFormsApp3
 
             btnRefresh.Visible = true;
             rtextLogger.Visible = true;
+            rtextLogger.Text = File.ReadAllText(@"Logger.txt");
+
         }
 
         private void btnNewStudent_Click(object sender, EventArgs e)
