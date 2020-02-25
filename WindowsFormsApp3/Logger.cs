@@ -10,7 +10,7 @@ namespace WindowsFormsApp3
 {
     class Logger
     {
-        public object Service { get; private set; }
+        public object Service { get; set; }
 
         public void LogDB(string s)
         {

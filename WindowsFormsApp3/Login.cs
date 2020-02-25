@@ -15,8 +15,8 @@ namespace WindowsFormsApp3
 {
     public partial class Login : Form
     {
-        SqlConnection conn;
         string rdr;
+        SqlConnection conn;
         String LogTransaction = "";
         Logger log =  new Logger();
         public Login()

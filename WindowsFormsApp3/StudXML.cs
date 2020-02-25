@@ -101,13 +101,20 @@ namespace WindowsFormsApp3
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtFN.Text == "")
-            { 
-                txtFN.Text = "Student.xml";
+            try
+            {
+                if (txtFN.Text == "")
+                {
+                    txtFN.Text = "Student.xml";
+                }
+                ds.WriteXml(txtFN.Text);
+
+                MessageBox.Show("Saved");
             }
-            ds.WriteXml(txtFN.Text);
-  
-            MessageBox.Show("Saved");
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please Add to XML before Save to XML");
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
