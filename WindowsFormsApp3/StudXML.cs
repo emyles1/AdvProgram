@@ -23,6 +23,17 @@ namespace WindowsFormsApp3
         public StudXML(SqlConnection conn)
         {
             InitializeComponent();
+            DBAddress1.Enabled = false;
+            DBFirstName.Enabled = false;
+            DBSurname.Enabled = false;
+            DBEmail.Enabled = false;
+            DBPhone.Enabled = false;
+            DBAddress2.Enabled = false;
+            DBCity.Enabled = false;
+            DBcomboCounty.Enabled = false;
+            DBcomboCourse.Enabled = false;
+            groupBox2.Enabled = false;
+
             this.conn = conn;
         }
 
