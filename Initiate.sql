@@ -1,4 +1,5 @@
-﻿USE StudentDB
+﻿
+USE StudentDB
 
 SET ANSI_NULLS ON
 GO
