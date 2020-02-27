@@ -143,8 +143,7 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
                         cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
                         cmd.Parameters.AddWithValue("@Course", comboCourse.Text);
-                        string text = comboCourse.Text;
-                        MessageBox.Show(text);
+
                         if (rdoBtnPost.Checked)
                         {
                             cmd.Parameters.AddWithValue("@Level", EnumLevel.Postgrade);
@@ -157,10 +156,24 @@ namespace WindowsFormsApp3
                         if (conn.State == ConnectionState.Closed
                             || conn.State == ConnectionState.Broken)
                             conn.Open();
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Updated");
+                       // try
+                       // {
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Updated");
+                            //reset the elements
+                            labelValue();
+                       // }
+                       // catch(Exception ex)
+                       // {
+                         //   MessageBox.Show("Please ensure required fields are populated");
+                       // }
                     }
                 }
+
+                 catch(Exception ex)
+                 {
+                   MessageBox.Show("Please ensure required fields are populated");
+                 }
 
                 finally
                 {
@@ -189,8 +202,16 @@ namespace WindowsFormsApp3
                             conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Deleted");
+              
+                        //reset the elements
+                        labelValue();
                     }
                 }
+
+                catch(Exception ex)
+                    {
+                        MessageBox.Show("Please ensure required fields are populated");
+                    }
 
                 finally
                 {
@@ -269,8 +290,8 @@ namespace WindowsFormsApp3
                 conn.Close();
             }
 
-                if (rbEditStudent.Checked && txtStudID.Text != null && flag ==false)
-                {
+            if (rbEditStudent.Checked && txtStudID.Text != null && flag == false)
+            {
                 DBAddress1.Enabled = true;
                 DBFirstName.Enabled = false;
                 DBSurname.Enabled = false;
@@ -281,7 +302,20 @@ namespace WindowsFormsApp3
                 comboCounty.Enabled = true;
                 comboCourse.Enabled = false;
                 txtStudID.Enabled = false;
-                }
+            }
+            else if (rbDeleteStudent.Checked && txtStudID.Text != null && flag == false)
+            {
+                /*DBAddress1.Enabled = false;
+                DBFirstName.Enabled = false;
+                DBSurname.Enabled = false;
+                DBEmail.Enabled = false;
+                DBPhone.Enabled = false;
+                DBAddress2.Enabled = false;
+                DBCity.Enabled = false;
+                comboCounty.Enabled = false;
+                comboCourse.Enabled = false;*/
+                txtStudID.Enabled = false;
+            }
         }
 
 
@@ -417,6 +451,7 @@ namespace WindowsFormsApp3
                 DBCity.Enabled = false;
                 comboCounty.Enabled = false;
                 comboCourse.Enabled = false;
+                txtStudID.Enabled = true;
             }
         }
         private void btnRefresh_Click(object sender, EventArgs e)
