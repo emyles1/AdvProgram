@@ -21,20 +21,10 @@ namespace WindowsFormsApp3
         Logger log =  new Logger();
         public Login()
         {
-            //Look at this implementation between Form 1 and AddCustomerForm. Guessing that this needs to be only initalized once then passed to the rest
-            //at this moment its initialized on the Form 1 form and here on the login form
             InitializeComponent();
 
-
-
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["orderline"].ConnectionString);
-
-         
-
-            //Displays the log file in the UX
-            
             btnRefresh.Visible = false;
-
             groupBox1.Visible = false;
             rtextLogger.Visible = false;
         }
@@ -46,7 +36,6 @@ namespace WindowsFormsApp3
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
             string username = txtUName.Text;
             string password = txtPass.Text;
 
@@ -68,32 +57,25 @@ namespace WindowsFormsApp3
                     using (SqlCommand cmd = new SqlCommand("returnPassword", conn))
                     {
                         conn.Open();
-
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Username", txtUName.Text);
-
-
                         //cmd.Connection = conn;
                         rdr = (string)cmd.ExecuteScalar();
-
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
-
                 }
                 finally
                 {
 
                     if (rdr == txtPass.Text)
                     {
-
                         groupBox1.Visible = true;
                         btnLogin.Text = "Logout";
                         LogTransaction = String.Format("Transaction Date: {0} | User: {1}  | Logged On", DateTime.Now, txtUName.Text);
                         log.LogDB(LogTransaction);
-
                     }
                     else
                     {
@@ -104,19 +86,13 @@ namespace WindowsFormsApp3
 
                     conn.Close();
                 }
-
-
-
-
         }
 
         private void btnDataHis_Click(object sender, EventArgs e)
         {
-
             btnRefresh.Visible = true;
             rtextLogger.Visible = true;
             rtextLogger.Text = File.ReadAllText(@"Logger.txt");
-
         }
 
         private void btnNewStudent_Click(object sender, EventArgs e)
@@ -124,29 +100,19 @@ namespace WindowsFormsApp3
             new AddStudent(conn, 2).ShowDialog();
         }
 
-
-
         private void btnEditStudent_Click(object sender, EventArgs e)
         {
-
             new AddStudent(conn, 1).ShowDialog();
-
-
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             new AddStudent(conn, 3).ShowDialog();
-
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
             rtextLogger.Text = File.ReadAllText(@"Logger.txt");
-
-
         }
 
         private void btnXmlStud_Click(object sender, EventArgs e)

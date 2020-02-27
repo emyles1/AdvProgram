@@ -33,7 +33,7 @@ namespace WindowsFormsApp3
             DBcomboCounty.Enabled = false;
             DBcomboCourse.Enabled = false;
             groupBox2.Enabled = false;
-
+            
             this.conn = conn;
         }
 
@@ -44,7 +44,6 @@ namespace WindowsFormsApp3
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-
             string ID = txtID.Text;
             cleartxt.ClearTxt(this);
             using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
@@ -81,7 +80,6 @@ namespace WindowsFormsApp3
                             }
                             else
                             {
-
                                 rdbtnUnder.Checked = true;
                             }
                             DBcomboCourse.Text = reader["Course"].ToString();
@@ -90,7 +88,6 @@ namespace WindowsFormsApp3
                             LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1}  | Name: {2} {3} | Loaded from StudXML Page ", DateTime.Now, ID, DBFirstName.Text, DBSurname.Text);
                             log.LogDB(LogTransaction);
                         }
-
                     }
                 }
                 finally
@@ -105,27 +102,12 @@ namespace WindowsFormsApp3
                    
                     conn.Close();
                 }
-
-
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (txtFN.Text == "")
-                {
-                    txtFN.Text = "Student.xml";
-                }
-                ds.WriteXml(txtFN.Text);
-
-                MessageBox.Show("Saved");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Please Add to XML before Save to XML");
-            }
+          
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -150,7 +132,9 @@ namespace WindowsFormsApp3
                 dt.Columns.Add("Course");
                 ds.Tables.Add(dt);
             }
+
             dt = ds.Tables["Student"];
+
             DataRow row = dt.NewRow();
 
             row["StudentID"] = txtID.Text;
@@ -174,13 +158,27 @@ namespace WindowsFormsApp3
             dt.Rows.Add(row);
             dt.AcceptChanges();
 
-            MessageBox.Show("Record Created");
+            //save to file
+
+            try
+            {
+                if (txtFN.Text == "")
+                {
+                    txtFN.Text = "Student.xml";
+                }
+                ds.WriteXml(txtFN.Text);
+
+                MessageBox.Show("Saved to file");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnView_Click(object sender, EventArgs e)
         {
             
         }
-    
     }
 }

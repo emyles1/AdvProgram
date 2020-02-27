@@ -32,7 +32,6 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.txtFN = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.DBAddress1 = new System.Windows.Forms.TextBox();
             this.DBAddress2 = new System.Windows.Forms.TextBox();
@@ -88,20 +87,10 @@
             // 
             // txtFN
             // 
-            this.txtFN.Location = new System.Drawing.Point(645, 76);
+            this.txtFN.Location = new System.Drawing.Point(542, 76);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(91, 20);
             this.txtFN.TabIndex = 16;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(542, 73);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(97, 24);
-            this.btnSave.TabIndex = 15;
-            this.btnSave.Text = "Save to XML";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnBack
             // 
@@ -258,7 +247,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(91, 24);
             this.btnAdd.TabIndex = 14;
-            this.btnAdd.Text = "Add to XML";
+            this.btnAdd.Text = "Save to XML";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -376,7 +365,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtFN);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.txtID);
@@ -396,7 +384,6 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox txtFN;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox DBAddress1;
         private System.Windows.Forms.TextBox DBAddress2;

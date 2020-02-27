@@ -15,7 +15,6 @@ namespace WindowsFormsApp3
 {
     public partial class AddStudent : Form
     {
-
        //Variables 
         String LogTransaction = "";
         int mode;
@@ -29,12 +28,8 @@ namespace WindowsFormsApp3
         class cc : Clear { }
         Clear cleartxt = new cc();
 
-        
-       
-
         public AddStudent(SqlConnection conn, int m)
         {
-
             mode = m;
             InitializeComponent();
             this.conn = conn;
@@ -44,14 +39,11 @@ namespace WindowsFormsApp3
                 this.rbEditStudent.Checked = true;
             if (mode == 3)
                 this.rbDeleteStudent.Checked = true;
+
             labelValue();
 
             dataGridView1.Visible = false;
-
         }
-
-
-      
 
         private void rbAddStudent_CheckedChanged(object sender, EventArgs e)
         {
@@ -60,7 +52,6 @@ namespace WindowsFormsApp3
             cleartxt.ClearTxt(this);
 
             labelValue();
-
         }
         private void rbEditStudent_CheckedChanged(object sender, EventArgs e)
         {
@@ -69,7 +60,6 @@ namespace WindowsFormsApp3
             labelValue();
             cleartxt.ClearTxt(this);
             //labelValue();
-
         }
 
         private void rbDeleteStudent_CheckedChanged(object sender, EventArgs e)
@@ -78,15 +68,12 @@ namespace WindowsFormsApp3
             mode = 3;
             cleartxt.ClearTxt(this);
             labelValue();
-         
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
             if (rbAddStudent.Checked)
             {
-
                 try
                 {
 
@@ -126,7 +113,6 @@ namespace WindowsFormsApp3
                         log.LogDB(LogTransaction);
 
                         conn.Close();
-
                     }
                 }
                 catch (Exception)
@@ -134,15 +120,12 @@ namespace WindowsFormsApp3
                     MessageBox.Show("Please ensure all fields have been filled");
                     conn.Close();
                 }
-
-                
             }
+
             else if(rbEditStudent.Checked)
             {
-
                 try
                 {
-
                     using (SqlCommand cmd = new SqlCommand("StudentEdit", conn))
                     {
                        
@@ -176,9 +159,9 @@ namespace WindowsFormsApp3
                             conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Updated");
-
                     }
                 }
+
                 finally
                 {
                     LogTransaction = String.Format("Transaction Date: {0} | Student: {1} {2} | Edited", DateTime.Now, DBFirstName.Text, DBSurname.Text);
@@ -191,7 +174,6 @@ namespace WindowsFormsApp3
 
             else if(rbDeleteStudent.Checked)
             {
-             
                 try
                 {
                     using (SqlCommand cmd = new SqlCommand("StudentDelete", conn))
@@ -209,17 +191,17 @@ namespace WindowsFormsApp3
                         MessageBox.Show("Deleted");
                     }
                 }
+
                 finally
                 {
                     LogTransaction = String.Format("Transaction Date: {0} | Student ID: {1} | Deleted", DateTime.Now, txtStudID.Text );
                     log.LogDB(LogTransaction);
                     conn.Close();
                 }
-
             }
+
             cleartxt.ClearTxt(this);
             labelValue();
-
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -227,17 +209,13 @@ namespace WindowsFormsApp3
             this.Close();
         }
 
-
         private void btnLoadStd_Click(object sender, EventArgs e)
         {
-
             string ID = txtStudID.Text;
-            //cleartxt.ClearTxt(this);
             using (SqlCommand cmd = new SqlCommand("studentReturn", conn))
               
             try
             {
-
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
              // set command type
@@ -264,11 +242,9 @@ namespace WindowsFormsApp3
                         }
                         else 
                         {
-                            
                             rdoBtnUnder.Checked = true;
                         }
-                        comboCourse.Text = reader["Course"].ToString();
-                        
+                        comboCourse.Text = reader["Course"].ToString(); 
                     }
 
                     if (txtStudID.Text == "" && DBFirstName.Text == "")
@@ -276,19 +252,16 @@ namespace WindowsFormsApp3
                         MessageBox.Show("Please enter a student ID");
                         //adding a flag so items wont get updated to disabled when no data pulled
                         flag = true;
-                        
-                       
                     }
                     else if (txtStudID.Text == txtStudID.Text && DBFirstName.Text == "")
                     {
                         MessageBox.Show("Student doesnt exist");
                         flag = true;
                         cleartxt.ClearTxt(this);
-                    }
-                    
+                    }  
                 }
-
             }
+
             finally
             {
                 LogTransaction = String.Format("Trasaction Date: {0},Loaded Student ID: {1}", DateTime.Now, txtStudID.Text);
@@ -308,8 +281,7 @@ namespace WindowsFormsApp3
                 comboCounty.Enabled = true;
                 comboCourse.Enabled = false;
                 txtStudID.Enabled = false;
-               
-            }
+                }
         }
 
 
@@ -322,13 +294,11 @@ namespace WindowsFormsApp3
                 //sql connection object
                 // using (SqlConnection conn = new SqlConnection(conn))
                 {
-
                     //retrieve the SQL Server instance version
                     string query = @"SELECT * FROM Student;";
 
                     //define the SqlCommand object
                     SqlCommand cmd = new SqlCommand(query, conn);
-
 
                     //Set the SqlDataAdapter object
                     SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
@@ -345,31 +315,26 @@ namespace WindowsFormsApp3
                     //set the DataGridView control's data source/data table
                     dataGridView1.DataSource = ds.Tables[0];
 
-
                     //close connection
                     conn.Close();
                 }
             }
             catch (Exception ex)
+
             {
                 //display error message
                 MessageBox.Show("Exception: " + ex.Message);
             }
         }
-
-
-
         public void labelValue()
         {
             int value = mode;
             if (value == 1)
             {
-
                 txtStudID.Visible = true;
                 txtStudID.Enabled = true;
                 btnLoadStd.Visible = true;
                 label11.Visible = true;
-
 
                 label1.Text = "Edit First Name";
                 label2.Text = "Edit Surname";
@@ -384,8 +349,7 @@ namespace WindowsFormsApp3
                 label11.Text = "Load Student ID";
                 btnSubmit.Text = "Edit Student";
 
-
-               DBAddress1.Enabled = false;
+                DBAddress1.Enabled = false;
                 DBFirstName.Enabled = false;
                 DBSurname.Enabled = false;
                 DBEmail.Enabled = false;
@@ -394,7 +358,6 @@ namespace WindowsFormsApp3
                 DBCity.Enabled = false;
                 comboCounty.Enabled = false;
                 comboCourse.Enabled = false;
-
             }
 
             else if (value == 2)
@@ -424,7 +387,6 @@ namespace WindowsFormsApp3
                 DBCity.Enabled = true;
                 comboCounty.Enabled = true;
                 comboCourse.Enabled = true;
-
             }
 
             else if (value == 3)
@@ -455,11 +417,8 @@ namespace WindowsFormsApp3
                 DBCity.Enabled = false;
                 comboCounty.Enabled = false;
                 comboCourse.Enabled = false;
-
             }
-
         }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
  

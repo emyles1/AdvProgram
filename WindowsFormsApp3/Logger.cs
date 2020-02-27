@@ -14,8 +14,6 @@ namespace WindowsFormsApp3
 
         public void LogDB(string s)
         {
-
-
             string fileName = "Logger.txt";
             if (!File.Exists(fileName))
             {
@@ -27,7 +25,6 @@ namespace WindowsFormsApp3
             {
                 file.WriteLine(s);
             }
-
         }
     }
 }
