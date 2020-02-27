@@ -159,7 +159,9 @@ namespace WindowsFormsApp3
                         cmd.Parameters.AddWithValue("@AddressL2", DBAddress2.Text);
                         cmd.Parameters.AddWithValue("@City", DBCity.Text);
                         cmd.Parameters.AddWithValue("@County", comboCounty.SelectedItem);
-                        cmd.Parameters.AddWithValue("@Course", comboCourse.SelectedItem);
+                        cmd.Parameters.AddWithValue("@Course", comboCourse.Text);
+                        string text = comboCourse.Text;
+                        MessageBox.Show(text);
                         if (rdoBtnPost.Checked)
                         {
                             cmd.Parameters.AddWithValue("@Level", EnumLevel.Postgrade);
@@ -181,6 +183,8 @@ namespace WindowsFormsApp3
                 {
                     LogTransaction = String.Format("Transaction Date: {0} | Student: {1} {2} | Edited", DateTime.Now, DBFirstName.Text, DBSurname.Text);
                     log.LogDB(LogTransaction);
+                    //update the grid view 
+                    dataGridView1.Refresh();
                     conn.Close();
                 }
             }
